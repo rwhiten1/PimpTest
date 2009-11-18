@@ -1,0 +1,7 @@
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+bin/pimp_test
+lib/pimp_test.rb
+test/test_pimp_test.rb
