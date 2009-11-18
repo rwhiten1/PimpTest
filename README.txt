@@ -1,14 +1,29 @@
 = pimp_test
 
-* FIX (url)
+http://github.com/rwhiten1/PimpTest
 
 == DESCRIPTION:
 
-FIX (describe your package)
+This will be (hopefully) a lightweight integration and functional automated testing web application.  It
+will be lightweight in the sense that it uses Rack to plug into any ruby based web server, doesn't require
+any databases, and should be very easy to install, like:
+
+gem install pimp_test (this won't work right this moment, since their isn't anything to GEM up)
+
+then to run it (on local host) $> ruby pimp_app.rb
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+Not much in the way of functionality, but things to come:
+- Drag existing test fixtures from a repository to add tests to a page
+- Add ui components to a page (Text, Headings, Tables, etc.)
+- Run test components on a page individually
+- Run an entire page
+- Editable properties that the test running environment will maintain and make available to all fixtures
+- Page level variables, inherited by child pages
+- Ability to run tests locally (where pimp_test is installed) or in a distrubuted fashion
+- Test locking, so that once a test is started, it has to finish before it can be started again.
+- Better results reporting than FitNesse, well, not better, just more persistent (maybe some data gathering)
 
 == SYNOPSIS:
 
