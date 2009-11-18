@@ -1,0 +1,11 @@
+<ul>
+    <% url = "" %>
+    <% @names.each_with_index do |n,i|
+        url += "/#{n}"
+        if i == 0 then %>
+            <li><a href="<%= url %>"><%= n %></a></li>
+        <% else %>
+            <li>&#187;<a href="<%= url %>"><%= n %></a></li>
+        <% end %>
+    <% end %>
+</ul>

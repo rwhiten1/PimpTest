@@ -89,15 +89,24 @@ describe "Pimp Controller" do
     </head>
 
 <body>
+  <div id="header">
+  <h2 id="title" class="white-text">Pimp Those Tests!</h2>
     <div id="menu">
-        <h2 class="white-text">Sucker Free Testing!!!</h2>
         <ul id="nav">
-            <li class="activelink"><a href="#">Run All</a></li>
+            <li><a href="#">Run All</a></li>
             <li><a href="#">Config</a></li>
             <li><a href="#">Variables</a></li>
             <li><a href="#">Properties</a></li>
+            <li><a href="#">Add</a></li>
         </ul>
     </div>
+    <div id="breadcrumb">
+        <ul>
+          <li><a href="/HomePage">HomePage</a></li>
+          <li>&#187;<a href="/HomePage/HelloTest">HelloTest</a></li>
+      </ul>
+    </div>
+  </div>
     <div class="left">
         <h4>Fixture Repository</h4>
         <ul class="fixtures">
@@ -143,6 +152,13 @@ describe "Pimp Controller" do
 </html>
     DOCUMENT
 
+    @trail = <<TRAIL
+<ul>
+          <li><a href="/HomePage">HomePage</a></li>
+          <li>&#187;<a href="/HomePage/HelloTest">HelloTest</a></li>
+</ul>
+TRAIL
+    @trail.gsub!(/\s+/,"")
     @rack_env ={"SERVER_NAME"=>"127.0.0.1", "async.callback"=>"#", "rack.url_scheme"=>"http", "HTTP_ACCEPT_ENCODING"=>"gzip,deflate,sdch", "HTTP_USER_AGENT"=>"Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/532.0 (KHTML, like Gecko) Chrome/3.0.195.32 Safari/532.0", "PATH_INFO"=>"/some/resource/to/grab", "rack.run_once"=>false, "rack.input"=>"#", "SCRIPT_NAME"=>"", "SERVER_PROTOCOL"=>"HTTP/1.1", "HTTP_ACCEPT_LANGUAGE"=>"en-US,en;q=0.8", "HTTP_CACHE_CONTROL"=>"max-age=0", "HTTP_HOST"=>"127.0.0.1:8080", "rack.errors"=>"#", "REMOTE_ADDR"=>"127.0.0.1", "REQUEST_PATH"=>"/some/resource/to/grab", "SERVER_SOFTWARE"=>"thin 1.2.4 codename Flaming Astroboy", "HTTP_ACCEPT_CHARSET"=>"ISO-8859-1,utf-8;q=0.7,*;q=0.3", "HTTP_VERSION"=>"HTTP/1.1", "rack.multithread"=>false, "rack.version"=>[1, 0], "async.close"=>"#", "REQUEST_URI"=>"/some/resource/to/grab", "rack.multiprocess"=>false, "SERVER_PORT"=>"8080", "QUERY_STRING"=>"", "GATEWAY_INTERFACE"=>"CGI/1.2", "HTTP_ACCEPT"=>"application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5", "HTTP_CONNECTION"=>"keep-alive", "REQUEST_METHOD"=>"GET"}
   end
   it "should return an html document by combining a page and a layout" do
@@ -150,6 +166,15 @@ describe "Pimp Controller" do
     #the render function will expect a relative URL
     html = controller.render("HomePage/HelloTest")
     html.should == @html_doc
+
+  end
+
+  it "should respond to a breadcrumb method and render a template" do
+    controller = PimpController.new()
+    controller.location = "HomePage/HelloTest"
+    brd = controller.breadcrumb() #the breadcrumbing is based on the current page URL
+    brd.gsub!(/\s+/,"")
+    brd.should == @trail
 
   end
 
