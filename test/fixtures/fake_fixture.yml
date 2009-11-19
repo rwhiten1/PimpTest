@@ -1,0 +1,15 @@
+#this is a YAML file!
+#This is a file meant to be used to test the fixture meta information generator.
+#The idea is to parse a fixture file one time, and pull from it the meta data
+#that is necessary to provide the user with the infromation on usage and how
+#tables are constructed
+:fake_method_one:
+  :params: [var1,var4]
+  :format: "|var1|var4|fake_method_one|\n|data1|data4|expected result|"
+  :type: "table"
+
+:fake_method_two:
+  :params: [var3,var3]
+  :format: "|var2|var3|fake_method_two|\n|data2|data3|expected result|"
+  :type: "table"
+
