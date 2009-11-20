@@ -18,24 +18,30 @@ class FakeFixtureClass
   #Fake Fixture Method 1.
   #This basically just prints out some values.  If the method really
   #did something special it would be documented here
-  #params:: @var1 @var2
+  #params:: @var1 @var4
   #type:: table
-  #----
-  #Format:
+  #---
+  #format:
   # |var1|var4|fake_method_one|
   # |data1|data4|expected result|
   def fake_method_one()
     #the parameters used in this method should all be instance variables
     puts "variable 1 => #{@var1}"
     puts "variable 4 => #{@var4}"
+    if @var1 != "" then
+      0.upto(@var1.size - 1) do |i|
+          puts @var1[i]
+      end
+    end
   end
 
   #Fake Fixture Method 2.
   #This basically just prints out some values.  If the method really
   #did something special it would be documented here
   #params:: @var1 @var2
-  #----
-  #Table Format:
+  #type:: table
+  #---
+  #format:
   # |var2|var3|fake_method_one|
   # |data2|data3|expected result|
   def fake_method_two()

@@ -1,5 +1,10 @@
---- 
-:fake_method_one: 
+#this is a YAML file!
+#This is a file meant to be used to test the fixture meta information generator.
+#The idea is to parse a fixture file one time, and pull from it the meta data
+#that is necessary to provide the user with the infromation on usage and how
+#tables are constructed
+---
+:fake_method_one:
   :type: table
   :format: |-
     |var1|var4|fake_method_one|
@@ -9,10 +14,10 @@
     This basically just prints out some values.  If the method really
     did something special it would be documented here
 
-  :params: 
+  :params:
   - "@var1"
   - "@var4"
-:fake_method_two: 
+:fake_method_two:
   :type: table
   :format: |-
     |var2|var3|fake_method_one|
@@ -23,7 +28,7 @@
     This basically just prints out some values.  If the method really
     did something special it would be documented here
 
-  :params: 
+  :params:
   - "@var1"
   - "@var2"
 :FakeFixtureClass: 
@@ -38,3 +43,4 @@
     License:: Ruby License
 
   :params: ""
+
