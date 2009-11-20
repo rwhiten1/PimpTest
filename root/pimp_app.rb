@@ -1,3 +1,5 @@
+#!/usr/bin/ruby
+require 'rubygems'
 require 'rack'
 require 'thin'
 require File.dirname(__FILE__) + "/../lib/pimp_controller"

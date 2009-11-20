@@ -21,7 +21,7 @@ class FakeFixtureClass
   #params:: @var1 @var2
   #type:: table
   #----
-  #Table Format:
+  #Format:
   # |var1|var4|fake_method_one|
   # |data1|data4|expected result|
   def fake_method_one()

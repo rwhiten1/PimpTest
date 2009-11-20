@@ -1,13 +1,43 @@
+require 'rubygems'
 require "spec"
 require "yaml"
 require File.dirname(__FILE__) + "/../lib/parse_fixture.rb"
 
 describe "Parse a fixture" do
 
+  before(:all) do
+    #see what directory we are running from
+    @curr_dir = Dir.pwd
+    Dir.chdir("test") if Dir.pwd =~ /PimpTest$/
+  end
+  
   before(:each) do
      @meta = YAML::load(File.open(File.dirname(__FILE__)+ "/fixtures/fake_fixture.yml"))
     @parser = FixtureParser.new("fake_fixture.rb")
     @parser.parse_file
+    comment = <<-COMMENT
+Fake Fixture Method 1.
+This basically just prints out some values.  If the method really
+did something special it would be documented here
+params:: @var1 @var2
+type:: table
+----
+Format:
+ |var1|var4|fake_method_one|
+ |data1|data4|expected result|
+COMMENT
+  @comment_lines = comment.split("\n")
+  
+  #check it out real quick
+  puts ("\n")
+  @comment_lines.each { |line| puts line +"<-->"  }
+   
+
+  end
+  
+  after(:all) do
+    Dir.chdir(@curr_dir)
+    puts "Reset dir to: #{Dir.pwd}"
   end
 
   it "should return the class name" do
