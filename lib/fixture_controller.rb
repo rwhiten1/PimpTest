@@ -52,6 +52,12 @@ module Controllers
         file.write(info[:tempfile].read)
       end
       
+      #rewind the temp file and pass it to the fixture parser
+      info[:tempfile].close
+      parser = FixtureParser.new(info[:filename])
+      parser.parse_file
+      parser.build_meta_information
+      
       #go back to the home page for now
       resp = Rack::Response.new("Redirecting....")
       resp.redirect("/HomePage")
