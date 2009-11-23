@@ -169,10 +169,18 @@ class FixtureParser
   def load_file
     @file_data = Array.new
     puts "Now we are in: #{Dir.pwd}"
-    File.open(Dir.pwd + "/fixtures/" + @filename) do |file|
-      while line = file.gets
-        @file_data << line.gsub!("\n","")
+    if @filename.instance_of? String
+      File.open(Dir.pwd + "/fixtures/" + @filename) do |file|
+        while line = file.gets
+          @file_data << line
+        end
       end
+    else
+      #we must have been given an IO object
+      @filename.each_line do |line|  
+        @file_data << line
+      end
+      @filename.close #not sure if I should do this or not?
     end
   end
 

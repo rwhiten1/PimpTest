@@ -1,8 +1,9 @@
 require File.dirname(__FILE__) + "/test_page"
+require File.dirname(__FILE__) + "/controllers"
 require 'erb'
 require 'rack'
 
-
+module Controllers
   class PimpController
 
     attr_writer :location
@@ -101,11 +102,6 @@ require 'rack'
       temp_body
     end
 
-    def root_dir
-      current = Dir.pwd
-      Dir.chdir("../config")
-      config = YAML::load(File.open("config.yml"))
-      @root_dir = config[:root_dir]
-      Dir.chdir(current)
-    end
+    
   end
+end

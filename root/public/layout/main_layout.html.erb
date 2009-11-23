@@ -31,6 +31,22 @@
             //Nifty("ul#test_books a","normal all")
             }
       </script>
+
+	<script type="text/javascript" language="JavaScript">
+	<!--
+	function file_onchange() {
+	  var s=document.getElementById('userfile').value;
+	  var r=s.lastIndexOf('/');
+	  if (r<0) {
+	    r=s.lastIndexOf('\\\\');
+	  }
+	  if (r>=0) {
+	    s=s.substr(r+1);
+	  }
+	  document.getElementById('remotename').value=s;
+	}
+	-->
+	</script>
     </head>
 
 <body>
@@ -58,6 +74,13 @@
             <li><a href="#">Fixture 3</a></li>
             <li><a href="#">Fixture 4</a></li>
         </ul>
+		<form action="/fixture" method="post" accept-charset="utf-8" enctype='multipart/form-data'>
+			<!--<label for="txt_file"></label><input type="text" name="filename" value="" id="txt_file"> -->
+			<input type="file" name="file_info" id='userfile'>
+			<input type="hidden" name="filename" value="" id="remotename" onChange="file_onchange()">
+			<input type="submit" name="btn_file" value="Upload" id="btn_file">
+			
+		</form>
     </div>
     <div class="content">
 <%= @html %>
