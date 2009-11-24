@@ -13,7 +13,7 @@ describe "Parse a fixture" do
   end
   
   before(:each) do
-    @meta = YAML::load(File.open(File.dirname(__FILE__)+ "/fixtures/fake_fixture_test.yml"))
+    @meta = YAML::load(File.open(File.dirname(__FILE__)+ "/fixtures/fake_fixture_test.yml.tst"))
     @parser = FixtureParser.new("fake_fixture.rb")
     @parser.parse_file
     comment = <<-COMMENT

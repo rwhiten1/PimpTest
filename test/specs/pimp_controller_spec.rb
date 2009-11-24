@@ -1,6 +1,7 @@
 require "spec"
 require File.dirname(__FILE__) + "/../../lib/pimp_controller"
 
+include Controllers
 describe "Pimp Controller" do
 
   before(:each) do
@@ -158,9 +159,35 @@ describe "Pimp Controller" do
           <li>&#187;<a href="/HomePage/HelloTest">HelloTest</a></li>
 </ul>
 TRAIL
+
+
+    @fix_html = <<FIXTURES
+<h4>Fixture Repository</h4>
+<ul class="fixtures">
+    <li>
+      <a href="#" id="fake_fixture" onClick="javascript:displayFixtureList('fake_fixture_list')">fake_fixture&nbsp;&nbsp;&nbsp;&lt;</a>
+      <ul class="nested" id="fake_fixture_list">
+        <li name="fake_method_one">fake_method_one()</li>
+        <li name="fake_method_two">fake_method_two()</li>
+      </ul>
+    </li>
+    <li>
+      <a href="#" id="ftp_send_fixture" onClick="javascript:displayFixtureList('ftp_send_fixture_list')">ftp_send_fixture&nbsp;&nbsp;&nbsp;&lt;</a>
+      <ul class="nested" id="ftp_send_fixture_list">
+        <li name="send_edi_data">send_edi_data()</li>
+        <li name="send_text_data">send_text_data()</li>
+      </ul>
+    </li>
+</ul>
+FIXTURES
     @trail.gsub!(/\s+/,"")
     @rack_env ={"SERVER_NAME"=>"127.0.0.1", "async.callback"=>"#", "rack.url_scheme"=>"http", "HTTP_ACCEPT_ENCODING"=>"gzip,deflate,sdch", "HTTP_USER_AGENT"=>"Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/532.0 (KHTML, like Gecko) Chrome/3.0.195.32 Safari/532.0", "PATH_INFO"=>"/some/resource/to/grab", "rack.run_once"=>false, "rack.input"=>"#", "SCRIPT_NAME"=>"", "SERVER_PROTOCOL"=>"HTTP/1.1", "HTTP_ACCEPT_LANGUAGE"=>"en-US,en;q=0.8", "HTTP_CACHE_CONTROL"=>"max-age=0", "HTTP_HOST"=>"127.0.0.1:8080", "rack.errors"=>"#", "REMOTE_ADDR"=>"127.0.0.1", "REQUEST_PATH"=>"/some/resource/to/grab", "SERVER_SOFTWARE"=>"thin 1.2.4 codename Flaming Astroboy", "HTTP_ACCEPT_CHARSET"=>"ISO-8859-1,utf-8;q=0.7,*;q=0.3", "HTTP_VERSION"=>"HTTP/1.1", "rack.multithread"=>false, "rack.version"=>[1, 0], "async.close"=>"#", "REQUEST_URI"=>"/some/resource/to/grab", "rack.multiprocess"=>false, "SERVER_PORT"=>"8080", "QUERY_STRING"=>"", "GATEWAY_INTERFACE"=>"CGI/1.2", "HTTP_ACCEPT"=>"application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5", "HTTP_CONNECTION"=>"keep-alive", "REQUEST_METHOD"=>"GET"}
+    @fix_html.gsub!(/\s+/,"")
+
   end
+
+
+
   it "should return an html document by combining a page and a layout" do
     controller = PimpController.new() #not sure yet if there needs to be anything initialized\
     #the render function will expect a relative URL
@@ -176,6 +203,14 @@ TRAIL
     brd.gsub!(/\s+/,"")
     brd.should == @trail
 
+  end
+
+  it "should respond to a fixtures method and render a template" do
+    controller = PimpController.new()
+    controller.location = "HomePage"
+    fix = controller.fixtures() #it really doesn't matter where you are in the app, all fixtures are shown
+    fix.gsub!(/\s+/,"")
+    fix.should == @fix_html
   end
 
 end

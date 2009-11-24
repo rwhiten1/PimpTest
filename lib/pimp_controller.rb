@@ -79,13 +79,36 @@ module Controllers
     def breadcrumb()
       #look up the template file
       puts Dir.pwd
-      template = get_template("breadcrumb.html.erb")
-      @names = @location.split(/\//)
-      rhtml = ERB.new(template)
-      rhtml.result(get_binding)
+      process_template("breadcrumb.html.erb"){ @names = @location.split(/\//) }
+    end
+
+    #This method will look up each "fixture" YAML file in the fixtures directory and load each YAML
+    #as a sub hash into a hash with the key being the fixtures class name.  Each YAML file in the
+    #fixtures directory contains a hash of methods in that fixture, the keys are the method names
+    def fixtures()
+     #grab the fixtures
+      current = Dir.pwd
+      rhtml = process_template("fixture_repository.html.erb") do
+         puts "Current directory: #{Dir.pwd}"
+        Dir.chdir("fixtures") #change to the fixtures directory
+        @fixtures = Hash.new
+        Dir.glob("*.yml") do |name|
+          h = YAML::load(File.open(name))
+          @fixtures[name[0...name.size-4].to_sym] = h
+        end
+      end
+      Dir.chdir(current)
+      rhtml
     end
 
     private
+
+    def process_template(template)
+      template = get_template(template)
+      yield
+      rhtml = ERB.new(template)
+      rhtml.result(get_binding)
+    end
 
     def get_template(template)
       current = Dir.pwd

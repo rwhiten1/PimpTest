@@ -3,7 +3,7 @@
     padding-left: 0px;
     position:absolute;
     top: 185px;
-    left: 200px;
+    left: 280px;
     width: 80%;
     height: 100%;
     margin-left: 0px;
@@ -14,7 +14,7 @@
 
 .left{
    float: left;
-   width: 200px;
+   width: 275px;
    height: 100%;
    margin-left: 0px;
    margin-right: 0px;
@@ -89,6 +89,30 @@
     font-weight: bold;
 }
 
+ul.nested{
+    display: none;
+    padding-top: 2.25em;
+    margin-bottom: 5px;
+    margin-left: 0px;
+}
+
+ul.nested li{
+    width: auto;
+    list-style-type:none;
+}
+
+ul.nested li a{
+    color: #FFF;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: #666666;
+    width: auto;
+}
+
+.dark-green-background{
+  background: #006666;  
+}
+
 ul.fixtures {
     margin: 0px 0px 0px 0px;
     float: left;
@@ -101,7 +125,7 @@ ul.fixtures, ul.fixtures li {
     list-style-type: none;
 }
 
-ul.fixtures li{
+ul.fixtures li {
     /*float: left;*/
     display: block;
     margin-left: 5px;
@@ -115,7 +139,6 @@ ul.fixtures li{
 ul.fixtures li a{
     padding: 5px 5px 5px 5px;
     margin-bottom: 5px;
-    background: #759bb9;
     color: #FFF;
     float:left;
     border-width: 1px 1px 1px 1px;
@@ -124,6 +147,10 @@ ul.fixtures li a{
     border-color: #666666;
     width: 100%;
 
+}
+
+.dark-blue-background{
+    background: #759bb9; 
 }
 
 ul.fixtures a:hover {

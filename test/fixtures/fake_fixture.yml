@@ -26,15 +26,3 @@
   :params: 
   - "@var1"
   - "@var2"
-:FakeFixtureClass: 
-  :type: ""
-  :format: ""
-  :info: |
-    This is a fake fixture class, meant to help test out the
-    Fixture repository code (the code that incorporates Fixtures into
-    the testing system
-    Author:: Rob Whitener
-    Copyright:: Copyright (c) 2009
-    License:: Ruby License
-
-  :params: ""

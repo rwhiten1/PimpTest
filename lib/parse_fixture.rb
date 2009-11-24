@@ -51,11 +51,11 @@ class FixtureParser
          in_comment = true
        elsif line =~ /#{@class}/
          # we are on the class definition line, associate the previous comment block with the class name
-         @comments[@class.to_sym] = comment_block
+         #@comments[@class.to_sym] = comment_block
          in_comment = false
          in_class = true
          comment_block = Array.new
-       elsif line =~ /^\s+def\s+(.+)\(/
+       elsif line =~ /^\s+def\s+(.+)\(/ && !line.include?("initialize")
          #this is the method line, associate the comment with the matching method name
          @comments[$1.to_sym] = comment_block
          in_comment = false

@@ -3,6 +3,7 @@ require File.dirname(__FILE__) + "/controllers"
 require File.dirname(__FILE__) + "/parse_fixture"
 require 'erb'
 require 'rack'
+require 'yaml'
 
 #This file contains the controller that is responsible for
 #managing HTTP interactions with the Fixture Repository/Manager.
@@ -49,7 +50,9 @@ module Controllers
       #write the file data to a new ruby file under the fixtures directory
       puts "\tCurrent Directory:  #{Dir.pwd}\n\t Filename: #{info[:filename]}"
       File.open(Dir.pwd + "/fixtures/#{info[:filename]}", "w") do |file|
-        file.write(info[:tempfile].read)
+        while line = info[:tempfile].gets
+          file.write(line.rstrip + "\n")
+        end
       end
       
       #rewind the temp file and pass it to the fixture parser
