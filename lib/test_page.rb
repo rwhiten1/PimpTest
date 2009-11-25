@@ -18,7 +18,7 @@ class TestPage
     content = ""
     @order.each_with_index do |o,i|
       component = TestObject.new(@location+ File::SEPARATOR + o)
-      content += "<div class=\"#{component.component_type}\" id=\"#{o}\">\n#{component.to_html}\n</div>\n"
+      content += "<div class=\"#{component.component_type}\ black-border\" id=\"#{o}\">\n#{component.to_html}\n</div>\n"
       if i < @order.size - 1 then
         content += "<br/>\n"
       end
