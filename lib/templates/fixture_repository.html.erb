@@ -7,9 +7,18 @@
       <a href="#" id="<%= str_key %>" class="dark-blue-background" onClick="javascript:displayFixtureList('<%= str_key %>_list')"><%= str_key %></a>
       <ul class="nested" id="<%= str_key %>_list">
         <% val.each do |k,v| %>
-        <li name="<%= k.to_s%>"><a href="#" class="dark-green-background"><%= k.to_s%>()</a></li>
+        <li name="<%= k.to_s%>">
+          <a href="#" class="draggable dark-green-background" id="<%= str_key %>:<%= k%>"><%= k.to_s%>()</a>
+        </li>
         <% end %>
       </ul>
     </li>
   <%end%>
 </ul>
+
+<script type="text/javascript">
+    var fixtures = document.getElementsByClassName('draggable');
+    for(var i = 0; i < fixtures.length; i++){
+        new Draggable(fixtures[i].id, {ghosting:true, revert:true});
+    }
+</script>

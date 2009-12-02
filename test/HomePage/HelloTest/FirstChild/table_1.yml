@@ -1,0 +1,6 @@
+#this is a YAML file!
+:type: "table"
+:class: "mock_fixture"
+:content:
+    "|var1|var2|var3|var4|run_this_method|\n
+    |data|to|put|in test|expected result|"

@@ -8,8 +8,8 @@ describe "Create Test Table Object" do
     @t_obj = TestObject.new("HomePage/HelloTest/table_1")
 
     @table = <<-TABLE
-<a class="table-button"><img  src="images/play_button_small.png" alt="run tests"/></a>
-<a class="table-button"><img src="images/edit_small.png" alt="edit table"/></a>
+<a class="table-button"><img  src="/images/play_button_small.png" alt="run tests"/></a>
+<a class="table-button"><img src="/images/edit_small.png" alt="edit table"/></a>
 <p>Fixture Class: <strong>mock_fixture</strong></p>
 <table cellpadding="0" cellspacing="0">
 <thead>
@@ -30,7 +30,11 @@ describe "Create Test Table Object" do
 </tr>
 </table>
     TABLE
+
+     @table.gsub!(/\s+/,"")
   end
+
+
 
   # Called after each example.
   after(:each) do
@@ -48,6 +52,7 @@ describe "Create Test Table Object" do
 
   it "should emit an HTML version of its content" do
     html = @t_obj.to_html
+    html.gsub!(/\s+/,"")
     html.should == @table
   end
 

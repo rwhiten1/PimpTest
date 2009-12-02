@@ -33,7 +33,28 @@ module Controllers
       @location = path[1...path.size] #make sure we save the location for any further page rendering needs
       puts "REQUEST_PATH => #{path}"
       if path != "/"
-        render(env["REQUEST_PATH"])
+        if path =~ /add_fixture/ then #not sure how much I like this, will need to come up with something better
+          #pull out the params
+          req = Rack::Request.new(env)
+          h = Hash.new
+
+          #pring out the params
+          req.params.each do |k,v|
+            puts "#{k} => #{v}"
+          end
+
+          h[:name] = req.params["class"]
+          h[:method] = req.params["method"]
+          h[:position] = req.params["position"] == "last" ? req.params["position"].to_sym : req.params["position"]
+          h[:path] = "/"+@location[0...@location.size-12] #strip off the add_fixture part of the path
+          html = add_fixture(h)
+          resp = Rack::Response.new()
+          resp.write(html)
+          resp.finish
+        else
+          render(env["REQUEST_PATH"])
+        end
+
       else        
         resp = Rack::Response.new("Redirecting....")
         resp.redirect("/HomePage")
@@ -67,6 +88,11 @@ module Controllers
       r = Rack::Response.new
       r.write(body)
       r.finish
+    end
+
+    def add_fixture(params)
+      page = TestPage.new(params[:path])
+      html = page.add_fixture(params)
     end
 
     def get_binding

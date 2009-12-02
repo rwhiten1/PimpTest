@@ -12,6 +12,13 @@
 
 }
 
+.hovering {
+   border-width: 2px 2px 2px 2px;
+   border-style: dashed;
+   border-color: #909090;
+   background: #ccffcc; 
+}
+
 .left{
    float: left;
    width: 275px;
@@ -123,6 +130,10 @@ ul.fixtures {
 
 ul.fixtures, ul.fixtures li {
     list-style-type: none;
+}
+
+.draggable {
+    cursor: move;
 }
 
 ul.fixtures li {

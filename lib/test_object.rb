@@ -1,4 +1,5 @@
 require 'yaml'
+require 'erb'
 
 class TestObject
 
@@ -25,29 +26,9 @@ class TestObject
 
   def create_table
     text = @object_hash[:content]
-    #split on new lines
-    rows = text.split("\n")
-
-    html = <<H
-<a class="table-button"><img  src="/images/play_button_small.png" alt="run tests"/></a>
-<a class="table-button"><img src="/images/edit_small.png" alt="edit table"/></a>
-<p>Fixture Class: <strong>mock_fixture</strong></p>
-<table cellpadding=\"0\" cellspacing=\"0\">\n<thead>\n<tr>
-H
-    rows.each_with_index do |row,i|
-      cells = row.split("|")
-      cells.each do |c|
-        html += "<td>#{c}</td>\n" if c.size > 1
-      end
-      if i == 0 then
-        html += "</tr>\n</thead>\n<tr>\n"
-      elsif i < rows.size - 1 then
-        html += "</tr>\n<tr>\n"
-      else
-        html += "</tr>\n"
-      end
-    end
-    html += "</table>\n"
+    template = get_template("fixture_table.html.erb")
+    rhtml = ERB.new(template)
+    rhtml.result(get_binding)
   end
 
   def create_text
@@ -57,5 +38,26 @@ H
     #wrap it in a paragraph tag.
     text = "<p>#{text}</p>"
   end
+
+  private
+
+  def get_binding
+    binding
+  end
+
+  def get_template(template)
+      current = Dir.pwd
+      #change to the lib/templates dir
+      Dir.chdir("../lib/templates")
+      temp_body = ""
+      File.open(template,"r") do |file|
+        while line = file.gets
+          temp_body += line
+        end
+      end
+      #change back to the original dir
+      Dir.chdir(current)
+      temp_body
+   end
 
 end
