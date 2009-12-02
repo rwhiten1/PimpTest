@@ -1,4 +1,5 @@
 require File.dirname(__FILE__) + "/test_object"
+require "fileutils"
 class TestPage
 
   def initialize(location)
@@ -48,10 +49,6 @@ class TestPage
 
   def add_fixture(fix)
     #grab out the fixture name and method, turn the name into a yaml filename
-    puts "In TestPage.add_fixture()"
-    fix.each do |k,v|
-      puts "#{k} => #{v}"
-    end
     fixture_file = fix[:name] + ".yml"
     fixture_method = fix[:method].to_sym
     fixture = YAML::load(File.open(Dir.pwd + "/fixtures/" + fixture_file))
@@ -89,6 +86,36 @@ class TestPage
     html = "<div class=\"#{new_fixture[:type]}\ black-border\" id=\"#{new_fixture[:type]}_#{types.size + 1}\">"
     html += TestObject.new(fix[:path][1...fix[:path].size] + File::SEPARATOR + "#{new_fixture[:type]}_#{types.size + 1}").to_html
     html += "</div>"
+  end
+
+  def delete_element(del)
+     puts "In TestPage.delete_element()"
+    del.each do |k,v|
+      puts "#{k} => #{v}"
+    end
+    #first, open up the orders yaml file based on the path
+    order = YAML::load(File.open(Dir.pwd + File::SEPARATOR + del[:path] + "/order.yml"))
+    size = order.size
+
+    #now, remove the elements yaml file from the directory
+
+    filedir = Dir.pwd + File::SEPARATOR + del[:path]
+    filename = filedir + File::SEPARATOR + del[:element] + ".yml"
+    puts "File #{filename} is Owned? #{File.owned?(filename)}"
+    puts File.stat(filename).inspect
+    File.chmod(0777,filename)
+    puts File.stat(filename).inspect
+    File.delete(filename) if File.exists?(filename)
+    #FileUtils.rm(filename) #, @root_dir+"/trash")
+    #FileUtils.mv(filename, filedir + "/trash")
+
+    #the element yaml file is gone, now, remove its entry from the
+    order.delete(del[:element])
+
+    #now, dump the order back out to a yaml file
+    File.open(Dir.pwd + File::SEPARATOR + del[:path] + "/order.yml", "w") do |io|
+      YAML::dump(order,io)
+    end
   end
 
 end

@@ -12,11 +12,16 @@ class TestObject
     Dir.chdir(current)  
     #load the yaml object file
     @object_hash = YAML::load(File.open(File.dirname(__FILE__) + File::SEPARATOR + root_dir+ File::SEPARATOR + location + ".yml"))
+    @object_hash[:name] = location.split("\/").last
 
   end
 
   def component_type
     @object_hash[:type]
+  end
+
+  def get_name
+    @object_hash[:name]
   end
 
   def to_html

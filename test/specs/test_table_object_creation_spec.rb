@@ -56,5 +56,20 @@ describe "Create Test Table Object" do
     html.should == @table
   end
 
+  it "should put the name of the element in the object hash" do
+    name = @t_obj.get_name
+    name.should == "table_1"
+  end
+
+  it "should delete a file upon request" do
+    File.open("testfile.txt","w") do |f|
+      1.upto(100) {|i| f.write(i.to_s + "\n")}
+    end
+
+    File.delete("testfile.txt")
+    puts Dir.pwd
+    File.delete(Dir.pwd + File::SEPARATOR + "specs" + File::SEPARATOR + "delete_file.yml") #if File.exists?("delete_file.yml")
+  end
+
   
 end

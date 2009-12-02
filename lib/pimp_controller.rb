@@ -38,16 +38,24 @@ module Controllers
           req = Rack::Request.new(env)
           h = Hash.new
 
-          #pring out the params
-          req.params.each do |k,v|
-            puts "#{k} => #{v}"
-          end
-
           h[:name] = req.params["class"]
           h[:method] = req.params["method"]
           h[:position] = req.params["position"] == "last" ? req.params["position"].to_sym : req.params["position"]
           h[:path] = "/"+@location[0...@location.size-12] #strip off the add_fixture part of the path
           html = add_fixture(h)
+
+          resp = Rack::Response.new()
+          resp.write(html)
+          resp.finish
+        elsif path =~ /delete_element/
+          req = Rack::Request.new(env)
+
+          #print out the params
+          req.params.each do |k,v|
+            puts "#{k} => #{v}"
+          end
+
+          html = delete_element(req,env) #this is the action
           resp = Rack::Response.new()
           resp.write(html)
           resp.finish
@@ -93,6 +101,16 @@ module Controllers
     def add_fixture(params)
       page = TestPage.new(params[:path])
       html = page.add_fixture(params)
+    end
+
+    def delete_element(request, env)
+      #pull out the params
+      h = {:element => request.params["element"]}
+      h[:path] = @location[0...@location.size-15]
+      page = TestPage.new(h[:path])
+      page.delete_element(h)
+      html = page.generate
+      html
     end
 
     def get_binding

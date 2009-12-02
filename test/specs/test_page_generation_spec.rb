@@ -121,4 +121,15 @@ FIX
 
 
   end
+
+  it "should be able to delete an element from a page" do
+    puts "Current Dir: #{Dir.pwd}"
+    page = TestPage.new("HomePage/HelloTest")
+    html = page.delete_element({:element => "table_2", :path => "HomePage/HelloTest"})
+
+    order = YAML::load(File.open(File.dirname(__FILE__)+ "/../HomePage/HelloTest/order.yml"))
+    file_exists = File.exists?(File.dirname(__FILE__)+ "/../HomePage/HelloTest/table_2.yml")
+    file_exists.should == false
+    order.size.should == 2
+  end
 end

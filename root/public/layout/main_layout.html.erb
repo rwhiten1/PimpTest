@@ -63,6 +63,19 @@
                         )
             }
 
+            function deleteElement(element){
+                //create an Ajax POST request that will delete the element from the server
+                //and then update the entire content area
+                params = {element: element};
+                url = "\/<%= @location %>\/delete_element";
+                new Ajax.Updater('content',url,{
+                    method: 'post',
+                    parameters: params,
+                    onLoading: showLoad,
+                    onComplete: hideLoad
+                })
+            }
+
             function showLoad(){
 
             }
