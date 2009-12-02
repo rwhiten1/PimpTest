@@ -1,0 +1,6 @@
+#this is a YAML file!
+:type: "text"
+:content:
+    "This is some text that will go on the page.  It will be\n
+    stuck inside a paragraph tag.  All newlines will be replaced\n
+    with &lt;br&gt; tags.\n"

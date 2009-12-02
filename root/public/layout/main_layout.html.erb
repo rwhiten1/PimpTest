@@ -23,6 +23,11 @@
       
 </style>
        <script type="text/javascript" src="/scripts/niftycube.js"></script>
+      <script type="text/javascript" src="/scripts/controls.js"></script>
+      <script type="text/javascript" src="/scripts/dragdrop.js"></script>
+      <script type="text/javascript" src="/scripts/effects.js"></script>
+      <script type="text/javascript" src="/scripts/prototype.js"></script>
+      <script type="text/javascript" src="/scripts/scriptaculous.js"></script>
        <link rel="StyleSheet" href="/stylesheets/active_sheet.css" type="text/css" media="screen"/>
       <script type="text/javascript">
             window.onload=function(){
@@ -40,6 +45,30 @@
                    f.style.display = "none";  
                 }
 
+            }
+
+            function addNewFixture(element, drop, event){
+                //get the class and method
+                info = element.id.split("\:")
+                params = {class: info[0], method: info[1], position: "last"} //will always be last for now.break
+                url = "\/<%= @location %>\/add_fixture"
+                new Ajax.Updater('content',url,
+                                     {
+                                      method: 'post',
+                                      parameters: params,
+                                      onLoading: showLoad,
+                                      onComplete: hideLoad,
+                                      insertion: 'bottom'
+                                     }
+                        )
+            }
+
+            function showLoad(){
+
+            }
+
+            function hideLoad(){
+                
             }
       </script>
 
@@ -87,9 +116,12 @@
 			
 		</form>
     </div>
-    <div class="content">
+    <div id="content" class="content">
 <%= @html %>
     </div>
+    <script type="text/javascript">
+      Droppables.add('content', {hoverclass: "hovering", accept: 'draggable', onDrop: addNewFixture});
+    </script>
 </body>
 
 </html>

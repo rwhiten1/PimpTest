@@ -41,12 +41,9 @@ module Controllers
     def store_file(req,env)
       puts "\t**************Form Data******************"
       #just print out what parmeters are there for now
-      #puts "PARAM: file_info => #{req.params["file_info"]}\n"
-      #puts "Form Type: #{req.media_type}\n"
       info = req.params["file_info"]
       info.each { |k,v| puts "\t#{k} => #{v}"  }
-      #get the file name
-      filename = info["filename"]
+
       #write the file data to a new ruby file under the fixtures directory
       puts "\tCurrent Directory:  #{Dir.pwd}\n\t Filename: #{info[:filename]}"
       File.open(Dir.pwd + "/fixtures/#{info[:filename]}", "w") do |file|

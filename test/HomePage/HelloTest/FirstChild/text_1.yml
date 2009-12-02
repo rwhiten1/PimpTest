@@ -1,0 +1,4 @@
+#this is a YAML file!
+:type: "text"
+:content:
+    "This is a child page of the parent page, fantastic!"

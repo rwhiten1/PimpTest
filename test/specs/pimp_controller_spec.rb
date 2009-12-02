@@ -180,9 +180,30 @@ TRAIL
     </li>
 </ul>
 FIXTURES
+
+    @newfixture = <<FIX
+<a class="table-button"><img  src="/images/play_button_small.png" alt="run tests"/></a>
+<a class="table-button"><img src="/images/edit_small.png" alt="edit table"/></a>
+<p>Fixture Class: <strong>mock_fixture</strong></p>
+<table cellpadding="0" cellspacing="0">
+    <thead>
+        <tr>
+                <td>var1</td>
+                <td>var4</td>
+                <td>fake_method_one</td>
+        </tr>
+    </thead>
+       <tr>
+                <td>data1</td>
+                <td>data4</td>
+                <td>expected result</td>
+        </tr>
+ </table>
+FIX
     @trail.gsub!(/\s+/,"")
     @rack_env ={"SERVER_NAME"=>"127.0.0.1", "async.callback"=>"#", "rack.url_scheme"=>"http", "HTTP_ACCEPT_ENCODING"=>"gzip,deflate,sdch", "HTTP_USER_AGENT"=>"Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/532.0 (KHTML, like Gecko) Chrome/3.0.195.32 Safari/532.0", "PATH_INFO"=>"/some/resource/to/grab", "rack.run_once"=>false, "rack.input"=>"#", "SCRIPT_NAME"=>"", "SERVER_PROTOCOL"=>"HTTP/1.1", "HTTP_ACCEPT_LANGUAGE"=>"en-US,en;q=0.8", "HTTP_CACHE_CONTROL"=>"max-age=0", "HTTP_HOST"=>"127.0.0.1:8080", "rack.errors"=>"#", "REMOTE_ADDR"=>"127.0.0.1", "REQUEST_PATH"=>"/some/resource/to/grab", "SERVER_SOFTWARE"=>"thin 1.2.4 codename Flaming Astroboy", "HTTP_ACCEPT_CHARSET"=>"ISO-8859-1,utf-8;q=0.7,*;q=0.3", "HTTP_VERSION"=>"HTTP/1.1", "rack.multithread"=>false, "rack.version"=>[1, 0], "async.close"=>"#", "REQUEST_URI"=>"/some/resource/to/grab", "rack.multiprocess"=>false, "SERVER_PORT"=>"8080", "QUERY_STRING"=>"", "GATEWAY_INTERFACE"=>"CGI/1.2", "HTTP_ACCEPT"=>"application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5", "HTTP_CONNECTION"=>"keep-alive", "REQUEST_METHOD"=>"GET"}
     @fix_html.gsub!(/\s+/,"")
+    @newfixture.gsub!(/\s+/,"")
 
   end
 
@@ -211,6 +232,13 @@ FIXTURES
     fix = controller.fixtures() #it really doesn't matter where you are in the app, all fixtures are shown
     fix.gsub!(/\s+/,"")
     fix.should == @fix_html
+  end
+
+  it "should add a fixture element to a page" do
+    controller = PimpController.new()
+    html = controller.add_fixture({:fixture=>"fake_fixture", :method=>"fake_method_one", :position => :last, :path => "HomePage/HelloTest"})
+    html.gsub(/\s+/,"")
+    html.should == @newfixture
   end
 
 end

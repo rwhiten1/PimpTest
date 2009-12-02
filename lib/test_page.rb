@@ -46,4 +46,49 @@ class TestPage
     html
   end
 
+  def add_fixture(fix)
+    #grab out the fixture name and method, turn the name into a yaml filename
+    puts "In TestPage.add_fixture()"
+    fix.each do |k,v|
+      puts "#{k} => #{v}"
+    end
+    fixture_file = fix[:name] + ".yml"
+    fixture_method = fix[:method].to_sym
+    fixture = YAML::load(File.open(Dir.pwd + "/fixtures/" + fixture_file))
+    new_fixture = {:type => fixture[fixture_method][:type],
+                   :class => fix[:name],
+                   :content => fixture[fixture_method][:format]}
+
+    #now, determine how to name this thing, load the order array
+    order = YAML::load(File.open(Dir.pwd + fix[:path] + "/order.yml"))
+
+    #find all instances in the order array (order.yml)
+    types = order.select {|e| e =~ /#{new_fixture[:type]}/}
+
+    #get the position
+    if fix[:position] == :last then
+      order << new_fixture[:type] + "_#{types.size + 1}"
+    else
+      0.upto(fix[:position].to_i - 1) { |i| new_order << order[i]; pos += 1}
+      #insert the new element
+      new_order << new_fixture[:type] + "_#{types.size + 1}"
+      fix[:position].to_i.upto(order.size - 1) { |i| new_order << order[i]}
+      order = new_order
+    end
+
+    #now, dump the two collections out to files
+    File.open(Dir.pwd + fix[:path] + "/order.yml", "w") do |io|
+      YAML::dump(order,io)
+    end
+
+    File.open(Dir.pwd + fix[:path] + "/#{new_fixture[:type]}_#{types.size + 1}.yml","w") do |io|
+      YAML::dump(new_fixture,io)
+    end
+
+    #now, create an HTML version of the new fixture and return that
+    html = "<div class=\"#{new_fixture[:type]}\ black-border\" id=\"#{new_fixture[:type]}_#{types.size + 1}\">"
+    html += TestObject.new(fix[:path][1...fix[:path].size] + File::SEPARATOR + "#{new_fixture[:type]}_#{types.size + 1}").to_html
+    html += "</div>"
+  end
+
 end
