@@ -1,6 +1,0 @@
---- 
-:type: table
-:class: fake_fixture
-:content: |-
-  |var1|var4|fake_method_one|
-  |data1|data4|expected result|

@@ -6,9 +6,13 @@
 ---
 :fake_method_one:
   :type: table
-  :format: |-
-    |var1|var4|fake_method_one|
-    |data1|data4|expected result|
+  :format:
+    - - var1
+      - var4
+      - fake_method_one
+    - - data1
+      - data4
+      - expected result
   :info: |
     Fake Fixture Method 1.
     This basically just prints out some values.  If the method really
@@ -19,9 +23,13 @@
   - "@var4"
 :fake_method_two:
   :type: table
-  :format: |-
-    |var2|var3|fake_method_one|
-    |data2|data3|expected result|
+  :format:
+    - - var2
+      - var3
+      - fake_method_one
+    - - data2
+      - data3
+      - expected result
   :info: |
     the parameters used in this method should all be instance variables
     Fake Fixture Method 2.

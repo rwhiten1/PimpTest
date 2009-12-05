@@ -1,20 +1,29 @@
 require "spec"
 require "yaml"
 require File.dirname(__FILE__) + "/../../lib/test_page"
+require "fileutils"
 
 describe "Create Test Page" do
 
   # Called before each example.
   before(:each) do
+
+    if File.exists?(Dir.pwd + "/HomePage/HelloTest/NewChild")
+    current = Dir.pwd
+    Dir.chdir(Dir.pwd + "/HomePage/HelloTest")
+    FileUtils.rm_rf("/")
+    end
+
     # Do nothing
     @page_text = <<PAGE
-<div class=\"text\" id=\"text_1\">
+<div class=\"text black-border\" id=\"text_1\">
 <p>This is some text that will go on the page.  It will be<br/> stuck inside a paragraph tag.  All newlines will be replaced<br/> with &lt;br&gt; tags.<br/></p>
 </div>
 <br/>
-<div class=\"table\" id=\"table_1\">
+<div class=\"table black-border\" id=\"table_1\">
 <a class=\"table-button\"><img  src=\"/images/play_button_small.png\" alt=\"run tests\"/></a>
 <a class=\"table-button\"><img src=\"/images/edit_small.png\" alt=\"edit table\"/></a>
+<a class="table_button" onclick="javascript: deleteElement('table_1')">X</a>
 <p>Fixture Class: <strong>mock_fixture</strong></p>
 <table cellpadding=\"0\" cellspacing=\"0\">
 <thead>
@@ -42,17 +51,19 @@ PAGE
     @children = <<LIST
 <h4>Pages</h4>
 <ul class="child_pages">
-<li><a href="/HomePage/HelloTest/FirstChild">FirstChild</a></li>
-<li><a href="/HomePage/HelloTest/SecondChild">SecondChild</a></li>
-<li><a href="/HomePage/HelloTest/ThirdChild">ThirdChild</a></li>
+<li><a href="HomePage/HelloTest/FirstChild">FirstChild</a></li>
+<li><a href="HomePage/HelloTest/SecondChild">SecondChild</a></li>
+<li><a href="HomePage/HelloTest/ThirdChild">ThirdChild</a></li>
 </ul>
 LIST
 
 
 
     @newfixture = <<FIX
+<div class=\"table black-border\" id=\"table_2\">
 <a class="table-button"><img  src="/images/play_button_small.png" alt="run tests"/></a>
 <a class="table-button"><img src="/images/edit_small.png" alt="edit table"/></a>
+<a class="table_button" onclick="javascript: deleteElement('table_2')">X</a>
 <p>Fixture Class: <strong>mock_fixture</strong></p>
 <table cellpadding="0" cellspacing="0">
     <thead>
@@ -68,10 +79,11 @@ LIST
                 <td>expected result</td>
         </tr>
  </table>
+</div>
 FIX
 
     @children.gsub!(/\s+/,"") #replace whitespace
-    @page_text.gsub!("\n","")
+    @page_text.gsub!(/\s+/,"")
     @newfixture.gsub!(/\s+/,"")
   end
 
@@ -82,12 +94,12 @@ FIX
 
 
 
-  it "should create a page from yaml files in a directory" do
+  it "should create a page from the yaml file in a directory" do
 
     #To change this template use File | Settings | File Templates.
     page = TestPage.new("HomePage/HelloTest")
     html = page.generate
-    html = html.gsub("\n","")
+    html = html.gsub(/\s+/,"")
     html.should == @page_text
   end
 
@@ -112,24 +124,53 @@ FIX
     html.should == @newfixture
 
     #now, verify the yamls have been updated
-    order = YAML::load(File.open(File.dirname(__FILE__)+ "/../HomePage/HelloTest/order.yml"))
-    table_2 = YAML::load(File.open(File.dirname(__FILE__)+ "/../HomePage/HelloTest/table_2.yml"))
+    page = YAML::load(File.open(File.dirname(__FILE__)+ "/../HomePage/HelloTest/page.yml"))
+    order = page[:order]
     order.size.should == 3
     order[order.size - 1].should == "table_2"
-    table_2.size.should == 3
-    table_2[:content].should == "|var1|var4|fake_method_one|\n|data1|data4|expected result|"
+    table_2 = page[:table_2]
+    table_2.size.should == 4
+    table_2[:content].should == [["var1","var4","fake_method_one"],["data1","data4","expected result"]]
 
-
+    #clean up the page hash, then save it back to the file
+    order.delete("table_2")
+    page.delete(:table_2)
+    File.open(File.dirname(__FILE__)+ "/../HomePage/HelloTest/page.yml","w") do |io|
+      YAML::dump(page,io)
+    end
   end
 
   it "should be able to delete an element from a page" do
     puts "Current Dir: #{Dir.pwd}"
+    #First, add a fixture to the page:
+    page = TestPage.new("HomePage/HelloTest")
+    fixture = {:name => "fake_fixture",
+               :method => "fake_method_one",
+               :position => :last,
+               :path => "/HomePage/HelloTest"}
+
+    #Verify the HTML output is valid
+    page.add_fixture(fixture)
+    page = nil
+    
+    #now, delete the fixture
     page = TestPage.new("HomePage/HelloTest")
     html = page.delete_element({:element => "table_2", :path => "HomePage/HelloTest"})
 
-    order = YAML::load(File.open(File.dirname(__FILE__)+ "/../HomePage/HelloTest/order.yml"))
-    file_exists = File.exists?(File.dirname(__FILE__)+ "/../HomePage/HelloTest/table_2.yml")
-    file_exists.should == false
+    page = YAML::load(File.open(File.dirname(__FILE__)+ "/../HomePage/HelloTest/page.yml"))
+    order = page[:order]
     order.size.should == 2
+    page[:table_2].should == nil
   end
+
+  it "should be able to add a new child page page" do
+    page = TestPage.new("HomePage/HelloTest")
+    page.add_child({:name => "NewChild"})
+
+    #look to see if there is a new directory under the current page
+    File.exists?(File.dirname(__FILE__) + "/../HomePage/HelloTest/NewChild").should == true
+    File.exists?(File.dirname(__FILE__) + "/../HomePage/HelloTest/NewChild/page.yml").should == true
+
+  end
+
 end

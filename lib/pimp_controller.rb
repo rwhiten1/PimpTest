@@ -33,33 +33,16 @@ module Controllers
       @location = path[1...path.size] #make sure we save the location for any further page rendering needs
       puts "REQUEST_PATH => #{path}"
       if path != "/"
-        if path =~ /add_fixture/ then #not sure how much I like this, will need to come up with something better
-          #pull out the params
-          req = Rack::Request.new(env)
-          h = Hash.new
-
-          h[:name] = req.params["class"]
-          h[:method] = req.params["method"]
-          h[:position] = req.params["position"] == "last" ? req.params["position"].to_sym : req.params["position"]
-          h[:path] = "/"+@location[0...@location.size-12] #strip off the add_fixture part of the path
-          html = add_fixture(h)
-
-          resp = Rack::Response.new()
-          resp.write(html)
-          resp.finish
-        elsif path =~ /delete_element/
-          req = Rack::Request.new(env)
-
-          #print out the params
-          req.params.each do |k,v|
-            puts "#{k} => #{v}"
-          end
-
-          html = delete_element(req,env) #this is the action
+        req = Rack::Request.new(env)
+        #run an action based on the request path.  If the request path doesn't contain
+        #a public method, then it will defualt to executing the render method.
+        html = run_action(req,env)
+        if html != "" then
           resp = Rack::Response.new()
           resp.write(html)
           resp.finish
         else
+          puts "\n\tRendering Request Path: #{env["REQUEST_PATH"]}"
           render(env["REQUEST_PATH"])
         end
 
@@ -71,36 +54,67 @@ module Controllers
 
     end
 
-    def render(url)
-      @location = url if !@location
-      #first, construct the page
-      puts "LOOKING FOR URL: #{url}"
-      #return Rack::Response.new("No Favicon Available",404) if url =~ /favicon/
-      page = TestPage.new(url)
-      @html = page.generate
-      @page_list = page.get_child_list
-      #now, look up the template and read it into a string
-      layout = ""
-      puts "We are in: #{Dir.pwd}"
-      File.open(@root_dir + "/public/layout/main_layout.html.erb") do |file|
-        while line = file.gets
-          layout += line
+
+    #this method will look for an action method name that matches part of the
+    #request path
+    def run_action(req,env)
+      #loop over the public instance methods, looking for an action
+      html = ""
+      self.public_methods.each do |method|
+        if @location =~ /#{method}$/ then
+          puts "\n\tRequest Path: #{@location}\n\tMethod Name: #{method}"
+          #we found the method, call it and pass in the request and the environment
+          html = self.send(method.to_sym,req,env)
+          break
         end
       end
-
-      #set up the layout string as an ERB template
-      rhtml = ERB.new(layout)
-      body = rhtml.result(self.get_binding)
-
-      #write the page into a Rack::Response
-      r = Rack::Response.new
-      r.write(body)
-      r.finish
+      html
     end
 
-    def add_fixture(params)
-      page = TestPage.new(params[:path])
-      html = page.add_fixture(params)
+    #Render is the default action executed if another action belonging
+    #to the controller isn't specifically named in the URL
+    def render(url)
+         @location = url if !@location
+         #first, construct the page
+         puts "LOOKING FOR URL: #{url}"
+         #return Rack::Response.new("No Favicon Available",404) if url =~ /favicon/
+         page = TestPage.new(url)
+         @html = page.generate
+         @page_list = page.get_child_list
+         #now, look up the template and read it into a string
+         layout = ""
+         puts "We are in: #{Dir.pwd}"
+         File.open(@root_dir + "/public/layout/main_layout.html.erb") do |file|
+           while line = file.gets
+             layout += line
+           end
+         end
+
+         #set up the layout string as an ERB template
+         rhtml = ERB.new(layout)
+         body = rhtml.result(self.get_binding)
+
+         #write the page into a Rack::Response
+         r = Rack::Response.new
+         r.write(body)
+         r.finish
+       end
+
+
+    #
+    #Actions go here.
+    #Actions must explicity accept two arguments.  The first argument is the current HTTP request being handled
+    #by the applicaiton.  The second argument is the environment array produced by Rack.  An action must return
+    #a String containing an HTML fragment or other data acceptable to the HTTP request agent.
+    #
+    def add_fixture(req,env)
+      h = Hash.new
+      h[:name] = req.params["fixture"]
+      h[:method] = req.params["method"]
+      h[:position] = req.params["position"] == "last" ? req.params["position"].to_sym : req.params["position"]
+      h[:path] = "/"+@location[0...@location.size-12] #strip off the add_fixture part of the path
+      page = TestPage.new(h[:path])
+      html = page.add_fixture(h)
     end
 
     def delete_element(request, env)
@@ -110,12 +124,30 @@ module Controllers
       page = TestPage.new(h[:path])
       page.delete_element(h)
       html = page.generate
+      if html == "" then
+        #this is an exception, and should be handled a little better.
+        html = "<p>Don't be a suckah, put some content on the page playa!</p>"
+      end
       html
     end
 
-    def get_binding
-      binding
+    def add_page(req,env)
+      h = {:name => req.params["page_name"]}
+      @location = @location[0...@location.size-9]
+      h[:path] = @location
+      page = TestPage.new(h[:path])
+      page.add_child(h)
+      #need to remove the "add_page" from the request path
+      env["REQUEST_PATH"] = "/"+ @location
+      html = ""
+      html
     end
+
+
+
+    #
+    #View helper methods.
+    # These methods are executed when the layout template is being rendered.
 
     #This method will render a template for breadcrumbing.  It will look for a template named
     #breadcrumb.html.erb in the lib/templates directory.  This will be the convention for any other templates
@@ -145,7 +177,12 @@ module Controllers
       rhtml
     end
 
+    def get_binding
+      binding
+    end
+
     private
+
 
     def process_template(template)
       template = get_template(template)

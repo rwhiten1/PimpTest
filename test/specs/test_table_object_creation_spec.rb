@@ -5,11 +5,17 @@ describe "Create Test Table Object" do
   # Called before each example.
   before(:each) do
     # Do nothing
-    @t_obj = TestObject.new("HomePage/HelloTest/table_1")
+    content = [["var1","var2","var3","var4","run_this_method"],["data","to","put","in test","expected result"]]
+    table = {:type => "table",
+             :class => "mock_fixture",
+             :name => "table_1",
+             :content => content}
+    @t_obj = TestObject.new(table)
 
     @table = <<-TABLE
 <a class="table-button"><img  src="/images/play_button_small.png" alt="run tests"/></a>
 <a class="table-button"><img src="/images/edit_small.png" alt="edit table"/></a>
+<a class="table_button" onclick="javascript: deleteElement('table_1')">X</a>
 <p>Fixture Class: <strong>mock_fixture</strong></p>
 <table cellpadding="0" cellspacing="0">
 <thead>
@@ -41,7 +47,7 @@ describe "Create Test Table Object" do
     # Do nothing
   end
 
-  it "should create a test object from a file" do
+  it "should create a test object from a hash" do
 
     #To change this template use File | Settings | File Templates.
 
@@ -59,16 +65,6 @@ describe "Create Test Table Object" do
   it "should put the name of the element in the object hash" do
     name = @t_obj.get_name
     name.should == "table_1"
-  end
-
-  it "should delete a file upon request" do
-    File.open("testfile.txt","w") do |f|
-      1.upto(100) {|i| f.write(i.to_s + "\n")}
-    end
-
-    File.delete("testfile.txt")
-    puts Dir.pwd
-    File.delete(Dir.pwd + File::SEPARATOR + "specs" + File::SEPARATOR + "delete_file.yml") #if File.exists?("delete_file.yml")
   end
 
   

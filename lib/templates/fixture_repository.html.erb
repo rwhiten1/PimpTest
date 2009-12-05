@@ -4,8 +4,8 @@
       str_key = key.to_s
      %>
     <li>
-      <a href="#" id="<%= str_key %>" class="dark-blue-background" onClick="javascript:displayFixtureList('<%= str_key %>_list')"><%= str_key %></a>
-      <ul class="nested" id="<%= str_key %>_list">
+      <a href="#" id="<%= str_key %>" class="dark-blue-background" onClick="javascript:displayWidget('<%= str_key %>_list'); return false;"><%= str_key %></a>
+      <ul class="nested" id="<%= str_key %>_list" style="display: none;">
         <% val.each do |k,v| %>
         <li name="<%= k.to_s%>">
           <a href="#" class="draggable dark-green-background" id="<%= str_key %>:<%= k%>"><%= k.to_s%>()</a>

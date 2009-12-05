@@ -1,3 +1,4 @@
+
 <html>
     <head>
         <title>Pimp your tests</title>
@@ -22,58 +23,97 @@
 
       
 </style>
-       <script type="text/javascript" src="/scripts/niftycube.js"></script>
-      <script type="text/javascript" src="/scripts/controls.js"></script>
+       <script type="text/javascript" src="/scripts/prototype.js"></script>
+      <script type="text/javascript" src="/scripts/scriptaculous.js"></script>
       <script type="text/javascript" src="/scripts/dragdrop.js"></script>
       <script type="text/javascript" src="/scripts/effects.js"></script>
-      <script type="text/javascript" src="/scripts/prototype.js"></script>
-      <script type="text/javascript" src="/scripts/scriptaculous.js"></script>
+      <script type="text/javascript" src="/scripts/controls.js"></script>
        <link rel="StyleSheet" href="/stylesheets/active_sheet.css" type="text/css" media="screen"/>
-      <script type="text/javascript">
-            window.onload=function(){
-            //Nifty("div#list","big");
-            //Nifty("ul#nav a","small transparent top");
-            //Nifty("ul#test_books a","normal all")
+
+
+	
+    </head>
+
+<body>
+
+<script type="text/javascript">
+
+            //set up a global associative array to keep track of what elements are displayed
+            var hidden = new Array();
+            window.onload = function(){
+                nested = document.getElementsByClassName('nested');
+                for(var i = 0; i < nested.length; i++){
+                    hidden[nested[i].id] = true;
+                }
+                //add the add page form id
+                hidden["page_name_div"] = true;
+                hidden["insert_1"] = true;
             }
 
-            function displayFixtureList(list){
 
-                var f = document.getElementById(list);
-                if (f.style.display == "none" || f.style.display == ""){
-                   f.style.display = "block";
+
+            function displayWidget(item_id){
+
+                //var f = get_object(list);f.style.display == "none" || f.style.display == ""
+                if (hidden[item_id]){
+                   //f.style.display = "block";
+                    Effect.Appear(item_id, {duration: 0.5, from:0.5});
+                    hidden[item_id] = false;
                 }else{
-                   f.style.display = "none";  
+                   //f.style.display = "none";
+                    Effect.Fade(item_id, {duration: 0.5, from:0.5})
+                    hidden[item_id] = true;
+
                 }
 
             }
 
-            function addNewFixture(element, drop, event){
-                //get the class and method
-                info = element.id.split("\:")
-                params = {class: info[0], method: info[1], position: "last"} //will always be last for now.break
-                url = "\/<%= @location %>\/add_fixture"
-                new Ajax.Updater('content',url,
-                                     {
-                                      method: 'post',
-                                      parameters: params,
-                                      onLoading: showLoad,
-                                      onComplete: hideLoad,
-                                      insertion: 'bottom'
-                                     }
-                        )
+            function showInsert(item_id){
+
+                var evnt = window.event;
+                var target = evnt.relatedTarget || evnt.fromElement;
+                alert("showInsert => From Element: " + target.id + "\nEvent Type: " + e.type);
+
+                if(hidden[item_id] == true){
+                   Effect.Appear(item_id, {duration: 0.5, from:0.5});
+                   hidden[item_id] = false;
+                }
             }
 
-            function deleteElement(element){
+            function hideInsert(item_id){
+
+                if(hidden[item_id] == false){
+                    alert("hideInsert => hidden["+item_id+"] = " + hidden[item_id]);
+                   Effect.Fade(item_id, {duration: 0.5, from:0.5}); 
+                   hidden[item_id] = true;
+                }
+            }
+
+            function setBackground(e,d){
+               //var listitem = get_object(e);
+               if(hidden[d] == true){
+                   //make the background the original
+                    e.style.background = "#FFA826";
+
+               }else{
+                   //the dropdown is about to show, set the background of the listitem
+                   e.style.background = "#E7F1F8";
+               }
+
+            }
+
+
+            function deleteElement(elem){
                 //create an Ajax POST request that will delete the element from the server
                 //and then update the entire content area
-                params = {element: element};
-                url = "\/<%= @location %>\/delete_element";
+                var params = {element: elem};
+                var url = "\/<%= @location %>\/delete_element";
                 new Ajax.Updater('content',url,{
                     method: 'post',
                     parameters: params,
                     onLoading: showLoad,
                     onComplete: hideLoad
-                })
+                });
             }
 
             function showLoad(){
@@ -81,12 +121,33 @@
             }
 
             function hideLoad(){
-                
-            }
-      </script>
 
-	<script type="text/javascript" language="JavaScript">
-	<!--
+            }
+
+            /*********************************************************************
+             * Get an object, this function is cross browser
+             * *** Please do not remove this header. ***
+             * This code is working on my IE7, IE6, FireFox, Opera and Safari
+             *
+             * Usage:
+             * var object = get_object(element_id);
+             *
+             * @Author Hamid Alipour Codehead @ webmaster-forums.code-head.com
+             **/
+            function get_object(id) {
+                var object = null;
+                if (document.layers) {
+                    object = document.layers[id];
+                } else if (document.all) {
+                    object = document.all[id];
+                } else if (document.getElementById) {
+                    object = document.getElementById(id);
+                }
+                return object;
+            }
+            /*********************************************************************/
+
+
 	function file_onchange() {
 	  var s=document.getElementById('userfile').value;
 	  var r=s.lastIndexOf('/');
@@ -98,31 +159,39 @@
 	  }
 	  document.getElementById('remotename').value=s;
 	}
-	-->
-	</script>
-    </head>
 
-<body>
+      </script>
+
+
 <div id="header">
 <h2 id="title" class="white-text">Pimp Those Tests!</h2>
+
     <div id="menu">
         <ul id="nav">
-            <li><a href="#">Run All</a></li>
-            <li><a href="#">Config</a></li>
-            <li><a href="#">Variables</a></li>
-            <li><a href="#">Properties</a></li>
-            <li><a href="#">Add</a></li>
+            <li><a onclick="javascript: setBackground(this,'page_name_div'); displayWidget('page_name_div');return false;">Add Page</a></li>
+            <li><a>Run All</a></li>
+            <li><a>Config</a></li>
+            <li><a>Variables</a></li>
+            <li><a>Properties</a></li>
         </ul>
     </div>
-    <div id="breadcrumb">
+     <div id="breadcrumb">
         <%= breadcrumb %>
     </div>
   </div>
+
+    <!-- This div contains the form for collecting the new page name -->
+      <div id="page_name_div" style="display: none;">
+        <form name="page_name_form" id="page_name_form" method="post" action="/<%= @location%>/add_page">
+          <label for="page_name">Page Name:</label><input type="text" name="page_name" value=""/>
+          <input type="submit" value="Add Page"/>
+        </form>
+      </div>
+
     <div class="left">
         <%= @page_list %>
         <%= fixtures %>
 		<form action="/fixture" method="post" accept-charset="utf-8" enctype='multipart/form-data'>
-			<!--<label for="txt_file"></label><input type="text" name="filename" value="" id="txt_file"> -->
 			<input type="file" name="file_info" id='userfile'>
 			<input type="hidden" name="filename" value="" id="remotename" onChange="file_onchange()">
 			<input type="submit" name="btn_file" value="Upload" id="btn_file">
@@ -130,10 +199,36 @@
 		</form>
     </div>
     <div id="content" class="content">
+
+      <div class="insert_point red-border" onmouseover="showInsert('insert_1'); return true;">
+        <div id="insert_1" class="insert_div" style="display: none;" onmouseout="hideInsert('insert_1'); return true;">
+          <ul class="insert_list">
+            <li><p>Add Text</p></li>
+            <li><p>Add Heading</p></li>
+          </ul>
+        </div>
+      </div>
+      
 <%= @html %>
     </div>
     <script type="text/javascript">
-      Droppables.add('content', {hoverclass: "hovering", accept: 'draggable', onDrop: addNewFixture});
+        function addNewFixture(elem, drop, event){
+                        //get the class and method
+                        var info = elem.id.split("\:");
+                        var params = {fixture: info[0], method: info[1], position: "last"}; //will always be last for now.break
+                        var url = "\/<%= @location %>\/add_fixture";
+                        new Ajax.Updater('content',url,
+                                             {
+                                              method: 'post',
+                                              parameters: params,
+                                              onLoading: showLoad,
+                                              onComplete: hideLoad,
+                                              insertion: 'bottom'
+                                             }
+                                );
+                    }
+      
+      Droppables.add('content', {hoverclass: 'hovering', accept: 'draggable', onDrop: addNewFixture});
     </script>
 </body>
 

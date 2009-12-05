@@ -1,0 +1,27 @@
+--- 
+:order: 
+- text_1
+- table_1
+:text_1: 
+  :type: text
+  :name: text_1
+  :content: |
+    This is some text that will go on the page.  It will be
+     stuck inside a paragraph tag.  All newlines will be replaced
+     with &lt;br&gt; tags.
+
+:table_1: 
+  :type: table
+  :class: mock_fixture
+  :name: table_1
+  :content: 
+  - - var1
+    - var2
+    - var3
+    - var4
+    - run_this_method
+  - - data
+    - to
+    - put
+    - in test
+    - expected result

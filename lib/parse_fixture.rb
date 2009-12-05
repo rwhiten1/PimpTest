@@ -136,6 +136,7 @@ class FixtureParser
     meta_info = {:info => "",:params => "", :type => "", :format => ""}
     in_format = false
     in_info = true
+    format = Array.new
     comment_array.each do |line|
       #look at the beginning of each line to determing what it is
       if line =~ /^params/ then
@@ -156,12 +157,20 @@ class FixtureParser
         if !in_format then
           meta_info[:info] += "#{line}\n" if in_info
         else
+          #need to turn this into a multi-dimensional array
           line.strip!
-          meta_info[:format] += "#{line}\n"
+          row = Array.new
+          cells = line.split("|").each do |c|
+            if c != "" then
+              row << c
+            end
+          end
+          format << row if row.size > 0
+
         end
       end
     end
-    meta_info[:format].strip!
+    meta_info[:format] = format
     meta_info
   end
 

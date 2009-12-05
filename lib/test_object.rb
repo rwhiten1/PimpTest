@@ -3,16 +3,9 @@ require 'erb'
 
 class TestObject
 
-  def initialize(location)
+  def initialize(table)
     #find the root of the test page tree
-    current = Dir.pwd
-    Dir.chdir("../config")
-    config = YAML::load(File.open("config.yml"))
-    root_dir = config[:root_dir]
-    Dir.chdir(current)  
-    #load the yaml object file
-    @object_hash = YAML::load(File.open(File.dirname(__FILE__) + File::SEPARATOR + root_dir+ File::SEPARATOR + location + ".yml"))
-    @object_hash[:name] = location.split("\/").last
+    @object_hash = table
 
   end
 

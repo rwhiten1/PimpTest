@@ -10,15 +10,16 @@ class TestPage
     Dir.chdir(current)
     @location = location
     #get the order.yml file out of the page's directory
-    @order = YAML::load(File.open(File.dirname(__FILE__) + File::SEPARATOR + @root_dir+ File::SEPARATOR + location + File::SEPARATOR + "order.yml"))
+    @page = YAML::load(File.open(File.dirname(__FILE__) + File::SEPARATOR + @root_dir+ File::SEPARATOR + location + File::SEPARATOR + "page.yml"))
 
   end
 
   def generate
     #loop over the order array
     content = ""
+    @order = @page[:order]
     @order.each_with_index do |o,i|
-      component = TestObject.new(@location+ File::SEPARATOR + o)
+      component = TestObject.new(@page[o.to_sym])
       content += "<div class=\"#{component.component_type}\ black-border\" id=\"#{o}\">\n#{component.to_html}\n</div>\n"
       if i < @order.size - 1 then
         content += "<br/>\n"
@@ -47,6 +48,20 @@ class TestPage
     html
   end
 
+  def add_child(page)
+    puts "CurrentDirectory: #{Dir.pwd}"
+    current = Dir.pwd
+    Dir.chdir(Dir.pwd + File::SEPARATOR + @location)
+    FileUtils.mkdir(page[:name])
+    Dir.chdir(page[:name])
+    h = {:order => []}
+    #FileUtils.touch("page.yml")
+    File.open("page.yml","w") do |io|
+      YAML::dump(h,io)
+    end
+    Dir.chdir(current)
+  end
+
   def add_fixture(fix)
     #grab out the fixture name and method, turn the name into a yaml filename
     fixture_file = fix[:name] + ".yml"
@@ -57,8 +72,7 @@ class TestPage
                    :content => fixture[fixture_method][:format]}
 
     #now, determine how to name this thing, load the order array
-    order = YAML::load(File.open(Dir.pwd + fix[:path] + "/order.yml"))
-
+    order = @page[:order]
     #find all instances in the order array (order.yml)
     types = order.select {|e| e =~ /#{new_fixture[:type]}/}
 
@@ -73,18 +87,21 @@ class TestPage
       order = new_order
     end
 
-    #now, dump the two collections out to files
-    File.open(Dir.pwd + fix[:path] + "/order.yml", "w") do |io|
-      YAML::dump(order,io)
-    end
+    #put the name into the new fixture
+    new_fixture[:name] =  "#{new_fixture[:type]}_#{types.size + 1}"
 
-    File.open(Dir.pwd + fix[:path] + "/#{new_fixture[:type]}_#{types.size + 1}.yml","w") do |io|
-      YAML::dump(new_fixture,io)
+    #add the new fixture to the page
+    @page["#{new_fixture[:type]}_#{types.size + 1}".to_sym] = new_fixture
+    #@page[:order] = order
+
+    #now, dump the two collections out to files
+    File.open(Dir.pwd + fix[:path] + "/page.yml", "w") do |io|
+      YAML::dump(@page,io)
     end
 
     #now, create an HTML version of the new fixture and return that
     html = "<div class=\"#{new_fixture[:type]}\ black-border\" id=\"#{new_fixture[:type]}_#{types.size + 1}\">"
-    html += TestObject.new(fix[:path][1...fix[:path].size] + File::SEPARATOR + "#{new_fixture[:type]}_#{types.size + 1}").to_html
+    html += TestObject.new(new_fixture).to_html
     html += "</div>"
   end
 
@@ -93,28 +110,19 @@ class TestPage
     del.each do |k,v|
       puts "#{k} => #{v}"
     end
-    #first, open up the orders yaml file based on the path
-    order = YAML::load(File.open(Dir.pwd + File::SEPARATOR + del[:path] + "/order.yml"))
+    #grab the order array from the page hash
+    order = @page[:order]
     size = order.size
 
-    #now, remove the elements yaml file from the directory
-
-    filedir = Dir.pwd + File::SEPARATOR + del[:path]
-    filename = filedir + File::SEPARATOR + del[:element] + ".yml"
-    puts "File #{filename} is Owned? #{File.owned?(filename)}"
-    puts File.stat(filename).inspect
-    File.chmod(0777,filename)
-    puts File.stat(filename).inspect
-    File.delete(filename) if File.exists?(filename)
-    #FileUtils.rm(filename) #, @root_dir+"/trash")
-    #FileUtils.mv(filename, filedir + "/trash")
+    #now, remove the element from the page hash
+    @page.delete(del[:element].to_sym)
 
     #the element yaml file is gone, now, remove its entry from the
     order.delete(del[:element])
 
     #now, dump the order back out to a yaml file
-    File.open(Dir.pwd + File::SEPARATOR + del[:path] + "/order.yml", "w") do |io|
-      YAML::dump(order,io)
+    File.open(Dir.pwd + File::SEPARATOR + del[:path] + "/page.yml", "w") do |io|
+      YAML::dump(@page,io)
     end
   end
 

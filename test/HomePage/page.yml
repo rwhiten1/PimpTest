@@ -1,6 +1,10 @@
 #this is a YAML file!
-:type: "text"
-:content:
+:order:
+ - text_1
+:text_1:
+  :type: "text"
+  :name: "text_1"
+  :content:
     "Hello, welcome to PimpTest - get ready to Pimp Your Tests!!!\n
     PimpTest is meant to be an improvement over the FitNesse wiki.\n
     Think of FitNesse, but with a web 2.0 interface as well as a repository\n
