@@ -7,9 +7,6 @@
      stuck inside a paragraph tag.  All newlines will be replaced
      with &lt;br&gt; tags.
 
-:order: 
-- text_1
-- table_1
 :table_1: 
   :type: table
   :class: mock_fixture
@@ -25,3 +22,11 @@
     - put
     - in test
     - expected result
+:text_2: 
+  :type: text
+  :name: text_2
+  :content: This here is some brand new text for your page!
+:order: 
+- text_1
+- text_2
+- table_1

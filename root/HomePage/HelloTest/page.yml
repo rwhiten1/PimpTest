@@ -1,6 +1,11 @@
 --- 
+:text_2: 
+  :type: text
+  :name: text_2
+  :content: "Adding text to the page.\n\n    "
 :order: 
 - text_1
+- text_2
 - table_1
 :text_1: 
   :type: text

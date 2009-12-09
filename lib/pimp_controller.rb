@@ -117,6 +117,17 @@ module Controllers
       html = page.add_fixture(h)
     end
 
+    def add_text(req,env)
+      h = Hash.new
+      h[:text] = req.params["text"]
+      h[:after] = req.params["after"]
+      h[:path] = @location[0...@location.size-9]
+      h[:type] = :text
+      page = TestPage.new(h[:path])
+      html = page.add_element(h)
+      html
+    end
+
     def delete_element(request, env)
       #pull out the params
       h = {:element => request.params["element"]}

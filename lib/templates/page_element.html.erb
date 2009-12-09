@@ -1,0 +1,53 @@
+<div class="<%= @component.component_type %> black-border" id="<%= @component.get_name%>">
+  <%= @component.to_html %>
+</div>
+
+<div class="insert_point" id="insert_<%= @component.get_name %>_container">
+  <div id="insert_<%= @component.get_name %>" class="insert_div" style="display: none;">
+    <ul class="insert_list">
+      <li><p class="insert_list_item" id="insert_<%= @component.get_name%>_p">Add Text</p></li>
+      <li><p class="insert_list_item" id="insert_hdr_<%= @component.get_name%>_p">Add Heading</p></li>
+    </ul>
+  </div>
+</div>
+
+<div id="insert_<%= @component.get_name%>_text" class="add_text_container container_style"  style="display: none;">
+  <form method="post" action="<%= @location %>/add_text" id="insert_<%= @component.get_name%>_text_form">
+    <label for="text" id="text_lbl">Type in the text to add to the page:</label>
+    <textarea rows="10" cols="85" name="text">
+
+    </textarea>
+    <br/>
+    <input type="hidden" name="after" value="<%= @component.get_name%>"/>
+    <input type="submit" value="Add Text">
+    <input id="cancel_<%= @component.get_name%>_text" type="button" value="Cancel" class="cancel_text"/>
+  </form>
+</div>
+
+<script type="text/javascript">
+  //This contains the Ajax request that will submit the form
+  $('insert_<%= @component.get_name%>_text_form').onsubmit = function(){
+                        new Ajax.Updater('<%= @component.get_name %>','<%= @location %>/add_text',{
+                                          parameters: $('insert_<%= @component.get_name%>_text_form').serialize(true),
+                                          method: 'post',
+                                          insertion: 'after'});
+      return false;
+      }
+</script>
+
+<div id="insert_<%= @component.get_name %>_header" class="add_header_container container_style" style="display: none;">
+  <form method="post" action="<%= @location%>/add_header">
+    <label for="header" id="hdr_label">Enter Header Text</label>
+    <input type="text" name="header" value=""/>
+    <input type="hidden" name="after" value="<%= @component.get_name%>"/>
+    <label for="size" id="select_lbl">Select a header size:</label>
+    <select name='size'>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+    <input type="submit" value="Add Header"/>
+    <input id="cancel_<%= @component.get_name %>_header" type="button" value="Cancel" class="cancel_header"/>
+  </form>
+</div>

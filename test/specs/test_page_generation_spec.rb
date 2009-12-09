@@ -173,4 +173,21 @@ FIX
 
   end
 
+  it "should be able to add a new text block to a page" do
+      page = TestPage.new("HomePage/HelloTest")
+      page.add_text_element({:text => "This here is some brand new text for your page!", :after=>"text_1"})
+
+      page_config = YAML::load(File.open(File.dirname(__FILE__)+ "/../HomePage/HelloTest/page.yml"))
+
+      #is the new text element in the page config, and is the correct text there?
+      page_config.key?(:text_2).should == true
+      page_config[:text_2][:content].should == "This here is some brand new text for your page!"
+      page_config[:text_2][:name].should == "text_2"
+
+      #is the new text element in the right position?  (second in the order array)
+      page_config[:order].size.should == 3
+      page_config[:order][1].should == "text_2"
+      #remove the new text element here.
+  end
+
 end

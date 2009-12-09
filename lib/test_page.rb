@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + "/test_object"
 require "fileutils"
 class TestPage
-
+  attr_reader :page
   def initialize(location)
     current = Dir.pwd()
     Dir.chdir("../config")
@@ -17,10 +17,12 @@ class TestPage
   def generate
     #loop over the order array
     content = ""
+    template = get_template("page_element.html.erb");
     @order = @page[:order]
     @order.each_with_index do |o,i|
-      component = TestObject.new(@page[o.to_sym])
-      content += "<div class=\"#{component.component_type}\ black-border\" id=\"#{o}\">\n#{component.to_html}\n</div>\n"
+      @component = TestObject.new(@page[o.to_sym])
+      rhtml = ERB.new(template);
+      content += rhtml.result(get_binding)
       if i < @order.size - 1 then
         content += "<br/>\n"
       end
@@ -105,6 +107,45 @@ class TestPage
     html += "</div>"
   end
 
+  #This method adds a vanilla element to the page.  Its either going to be
+  #a block of text, a header, or a blank table (with no associated fixture)
+  def add_element(info)
+    #get what type of element it is
+    if info[:type] == :text then
+      add_text_element(info)
+    elsif info[:type] == :header then
+      add_header_element(info)
+    elsif info[:type] == :table then
+      add_table_element(info)
+    end
+  end
+
+  #this method adds a new text block to the page.  Its awesome!
+  def add_text_element(info)
+    #first, find out where to insert the text element
+    position = @page[:order].index(info[:after]) + 1 #put it right 'after' that one
+    #count up the number of text elements
+    text_elems = @page[:order].select {|e| e =~ /text/}
+    @page[:order].insert(position,"text_#{text_elems.size+1}")
+
+    #now, add the text to the page hash
+    new_text = {:type => "text",
+                :name => "text_#{text_elems.size+1}",
+                :content => info[:text]}
+    @page["text_#{text_elems.size+1}".to_sym] = new_text
+
+    #and save the yaml file
+    File.open(Dir.pwd + File::SEPARATOR + @location + "/page.yml", "w") do |io|
+      YAML::dump(@page,io)
+    end
+
+    #generate the HTML and return it to the browser
+    template = get_template("page_element.html.erb");
+    @component = TestObject.new(@page["text_#{text_elems.size+1}".to_sym])
+    rhtml = ERB.new(template);
+    rhtml.result(get_binding)
+  end
+
   def delete_element(del)
      puts "In TestPage.delete_element()"
     del.each do |k,v|
@@ -124,6 +165,27 @@ class TestPage
     File.open(Dir.pwd + File::SEPARATOR + del[:path] + "/page.yml", "w") do |io|
       YAML::dump(@page,io)
     end
+  end
+
+  #need to find a way to pull this method out into a class or method so the view related
+  #classes don't need to keep repeating this.
+  def get_template(template)
+      current = Dir.pwd
+      #change to the lib/templates dir
+      Dir.chdir("../lib/templates")
+      temp_body = ""
+      File.open(template,"r") do |file|
+        while line = file.gets
+          temp_body += line
+        end
+      end
+      #change back to the original dir
+      Dir.chdir(current)
+      temp_body
+  end
+
+  def get_binding
+    binding
   end
 
 end
