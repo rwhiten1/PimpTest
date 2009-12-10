@@ -23,9 +23,9 @@ class TestPage
       @component = TestObject.new(@page[o.to_sym])
       rhtml = ERB.new(template);
       content += rhtml.result(get_binding)
-      if i < @order.size - 1 then
-        content += "<br/>\n"
-      end
+      #if i < @order.size - 1 then
+      #  content += "<br/>\n"
+      #end
     end
     content
   end

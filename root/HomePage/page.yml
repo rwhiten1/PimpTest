@@ -1,6 +1,8 @@
 --- 
+:order: 
+- text_1
+- text_2
 :text_1: 
-  :type: text
   :content: |-
     Hello, welcome to PimpTest - get ready to Pimp Your Tests!!!
      PimpTest is meant to be an improvement over the FitNesse wiki.
@@ -10,6 +12,9 @@
      If that isn't enough, it is fully extendable so you can add any type of UI widget
      that you would like to be able to insert on a page.  Prepare to make it rain, 
      dollar-dollar bill y'all.  word.
+  :type: text
   :name: text_1
-:order: 
-- text_1
+:text_2: 
+  :content: New text on the home page.
+  :type: text
+  :name: text_2
