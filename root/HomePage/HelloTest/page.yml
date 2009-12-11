@@ -1,5 +1,21 @@
 --- 
+:order: 
+- text_1
+- table_1
+:text_1: 
+  :type: text
+  :location: /HomePage/HelloTest
+  :name: text_1
+  :content: |
+    This is some text that will go on the page.  It will be
+     stuck inside a paragraph tag.  All newlines will be replaced
+     with &lt;br&gt; tags.
+
 :table_1: 
+  :type: table
+  :location: /HomePage/HelloTest
+  :class: mock_fixture
+  :name: table_1
   :content: 
   - - var1
     - var2
@@ -11,17 +27,3 @@
     - put
     - in test
     - expected result
-  :type: table
-  :class: mock_fixture
-  :name: table_1
-:text_1: 
-  :content: |
-    This is some text that will go on the page.  It will be
-     stuck inside a paragraph tag.  All newlines will be replaced
-     with &lt;br&gt; tags.
-
-  :type: text
-  :name: text_1
-:order: 
-- text_1
-- table_1

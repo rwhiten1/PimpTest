@@ -210,6 +210,72 @@ FIX
     #is the new text element in the right position?  (second in the order array)
     page_config[:order].size.should == 3
     page_config[:order][1].should == "head_1"
+
+    page_config[:order].delete("head_1")
+    page_config.delete(:head_1)
+    File.open(File.dirname(__FILE__)+ "/../HomePage/HelloTest/page.yml","w") do |io|
+        YAML.dump(page_config,io)
+    end
+  end
+
+  it "should be able to edit a header on a page" do
+    page = TestPage.new("HomePage/HelloTest")
+    #add a new header
+    page.add_header_element({:header => "A New Heading!", :size => "4", :after=>"text_1"})
+
+    #now, edit the header
+    html = page.edit_header(:name=>"head_1",:header=>"This has been edited")
+    #now, get the config file and verify the edit
+    page_config = YAML::load(File.open(File.dirname(__FILE__)+ "/../HomePage/HelloTest/page.yml"))
+    page_config[:head_1][:content].should == "This has been edited"
+    page_config[:head_1][:size].should == "4"
+    page_config[:order].size.should == 3
+    page_config[:order][1].should == "head_1"
+    #now, delete the header to clean up.
+    page_config[:order].delete("head_1")
+    page_config.delete(:head_1)
+    File.open(File.dirname(__FILE__)+ "/../HomePage/HelloTest/page.yml","w") do |io|
+        YAML.dump(page_config,io)
+    end
+  end
+
+  it "should be able to edit a text element on the page" do
+    page = TestPage.new("HomePage/HelloTest")
+    #add a text element to the page
+    page.add_text_element({:text => "This here is some brand new text for your page!", :after=>"text_1"})
+
+    page.edit_text({:text=>"The text has been edited.", :name=>"text_2"})
+    page_config = YAML::load(File.open(File.dirname(__FILE__)+ "/../HomePage/HelloTest/page.yml"))
+    page_config[:text_2][:content].should == "The text has been edited."
+
+    #now delete the element
+    page_config[:order].delete("text_2")
+    page_config.delete(:text_2)
+    File.open(File.dirname(__FILE__)+ "/../HomePage/HelloTest/page.yml","w") do |io|
+        YAML.dump(page_config,io)
+    end
+  end
+
+  it "should be able to determine the next available name and position for an element" do
+    #this represents the position array.
+    arr = ["text_3", "table_1", "header_2", "text_1", "table_3","text_4"]
+    page = TestPage.new("HomePage/HelloTest")
+
+    #this should return what the name for the new element will be, it should be text_2
+    name = page.make_new_name("text",arr)
+    name.should == "text_2"
+
+    #now, try it out but force the new name loop to count towards the bottom of the array
+    arr = ["text_3","table_1","text_1","table_3","text_2","text_5"]
+    name = page.make_new_name("text",arr)
+    name.should == "text_4"
+
+    #finally, make it count off the end of the list, this is in effect adding an
+    #element name that has not been used before
+    arr = ["text_3", "table_1","text_1","table_3","text_2","text_4"]
+    name = page.make_new_name("text",arr)
+    name.should == "text_5"
+    
   end
 
 end

@@ -1,1 +1,13 @@
-<h<%= @object_hash[:size]%>><%= @object_hash[:content]%></h<%= @object_hash[:size]%>>
+<h<%= @object_hash[:size]%> class="header-text" id="<%= @object_hash[:name] %>_text">
+  <%= @object_hash[:content]%>
+</h<%= @object_hash[:size]%>>
+
+<script type="text/javascript">
+  new Ajax.InPlaceEditor('<%= @object_hash[:name]%>_text','<%= @object_hash[:location]%>/edit_header',
+                            {callback: function(form,value){
+                               var param = 'elem=' + <%= @object_hash[:name]%>.id;
+                                param += '&header=' + encodeURIComponent(value);
+                                return param;
+                            },
+                            highlightcolor: "#eeffee"});
+</script>

@@ -1,4 +1,40 @@
-<div class="<%= @component.component_type %> black-border" id="<%= @component.get_name%>">
+<script type="text/javascript">
+   hidden["insert_<%= @component.get_name %>_text"] = true;
+   hidden["insert_<%= @component.get_name %>_header"] = true;
+   hidden["insert_<%= @component.get_name %>"] = true;
+   $('cancel_<%= @component.get_name%>_text').onclick = displayWidgetHandler;
+   $('cancel_<%= @component.get_name%>_header').onclick = displayWidgetHandler;
+   $('insert_<%= @component.get_name%>_p').onclick = displayWidgetHandler;
+   $('insert_hdr_<%= @component.get_name%>_p').onclick = displayWidgetHandler;
+   $('insert_<%= @component.get_name %>_container').onmouseover = showInsert;
+   $('insert_<%= @component.get_name %>_container').onmouseout = hideInsert;
+
+   //This contains the Ajax request that will submit add text the form
+  $('insert_<%= @component.get_name%>_text_form').onsubmit = function(){
+                        new Ajax.Updater('insert_<%= @component.get_name %>_header','<%= @location %>/add_text',{
+                                          parameters: $('insert_<%= @component.get_name%>_text_form').serialize(true),
+                                          method: 'post',
+										  evalScripts: true,
+                                          insertion: 'after'});
+						//Hide the form
+						displayWidget('insert_<%= @component.get_name %>_text');
+      					return false;
+      }
+
+   //This contains the Ajax request that will submit the add header form
+  $('insert_<%= @component.get_name%>_header_form').onsubmit = function(){
+                        new Ajax.Updater('insert_<%= @component.get_name %>_header','<%= @location %>/add_header',{
+                                          parameters: $('insert_<%= @component.get_name%>_header_form').serialize(true),
+                                          method: 'post',
+										  evalScripts: true,
+                                          insertion: 'after'});
+						//Hide the form
+						displayWidget('insert_<%= @component.get_name %>_header');
+      					return false;
+      }
+</script>
+
+<div class="<%= @component.component_type %>" id="<%= @component.get_name%>">
   <%= @component.to_html %>
 </div>
 
@@ -42,38 +78,3 @@
   </form>
 </div>
 
-<script type="text/javascript">
-   hidden["insert_<%= @component.get_name %>_text"] = true;
-   hidden["insert_<%= @component.get_name %>_header"] = true;
-   hidden["insert_<%= @component.get_name %>"] = true;
-   $('cancel_<%= @component.get_name%>_text').onclick = displayWidgetHandler;
-   $('cancel_<%= @component.get_name%>_header').onclick = displayWidgetHandler;
-   $('insert_<%= @component.get_name%>_p').onclick = displayWidgetHandler;
-   $('insert_hdr_<%= @component.get_name%>_p').onclick = displayWidgetHandler;
-   $('insert_<%= @component.get_name %>_container').onmouseover = showInsert;
-   $('insert_<%= @component.get_name %>_container').onmouseout = hideInsert;
-
-   //This contains the Ajax request that will submit add text the form
-  $('insert_<%= @component.get_name%>_text_form').onsubmit = function(){
-                        new Ajax.Updater('insert_<%= @component.get_name %>_header','<%= @location %>/add_text',{
-                                          parameters: $('insert_<%= @component.get_name%>_text_form').serialize(true),
-                                          method: 'post',
-										  evalScripts: true,
-                                          insertion: 'after'});
-						//Hide the form
-						displayWidget('insert_<%= @component.get_name %>_text');
-      					return false;
-      }
-
-   //This contains the Ajax request that will submit the add header form
-  $('insert_<%= @component.get_name%>_header_form').onsubmit = function(){
-                        new Ajax.Updater('insert_<%= @component.get_name %>_header','<%= @location %>/add_header',{
-                                          parameters: $('insert_<%= @component.get_name%>_header_form').serialize(true),
-                                          method: 'post',
-										  evalScripts: true,
-                                          insertion: 'after'});
-						//Hide the form
-						displayWidget('insert_<%= @component.get_name %>_header');
-      					return false;
-      }
-</script>

@@ -4,22 +4,23 @@
     <list default="true" readonly="true" id="c6719db8-8305-4281-a9bf-26c95305774d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/specs/test_page_generation_spec.rb" afterPath="$PROJECT_DIR$/test/specs/test_page_generation_spec.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/templates/text_element.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/templates/content_heading.html.erb" afterPath="$PROJECT_DIR$/lib/templates/content_heading.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root/public/layout/main_layout.html.erb" afterPath="$PROJECT_DIR$/root/public/layout/main_layout.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/test_page.rb" afterPath="$PROJECT_DIR$/lib/test_page.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root/HomePage/HelloTest/page.yml" afterPath="$PROJECT_DIR$/root/HomePage/HelloTest/page.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root/HomePage/HelloTest/SecondChild/page.yml" afterPath="$PROJECT_DIR$/root/HomePage/HelloTest/SecondChild/page.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/templates/fixture_table.html.erb" afterPath="$PROJECT_DIR$/lib/templates/fixture_table.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/pimp_controller.rb" afterPath="$PROJECT_DIR$/lib/pimp_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/templates/page_element.html.erb" afterPath="$PROJECT_DIR$/lib/templates/page_element.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root/HomePage/page.yml" afterPath="$PROJECT_DIR$/root/HomePage/page.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/HomePage/HelloTest/page.yml" afterPath="$PROJECT_DIR$/test/HomePage/HelloTest/page.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root/HomePage/HelloTest/FirstChild/page.yml" afterPath="$PROJECT_DIR$/root/HomePage/HelloTest/FirstChild/page.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/test_object.rb" afterPath="$PROJECT_DIR$/lib/test_object.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/templates/content_heading.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/root/public/scripts/pimp_scripts.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root/public/stylesheets/active_sheet.css" afterPath="$PROJECT_DIR$/root/public/stylesheets/active_sheet.css" />
     </list>
     <list id="05605deb-070e-4e91-a3ef-aacdf65eb5ed" name="ignore" comment="ignore these files" />
-    <ignored path="pimp_test.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path="pimp_test.iws" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,16 +44,16 @@
       <file leaf-file-name="active_sheet.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/root/public/stylesheets/active_sheet.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="22" selection-start="573" selection-end="573" vertical-scroll-proportion="0.0">
+            <state line="204" column="21" selection-start="3275" selection-end="3275" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_object.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/test_object.rb">
+      <file leaf-file-name="text_element.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/templates/text_element.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="29" selection-start="875" selection-end="875" vertical-scroll-proportion="0.0">
+            <state line="0" column="33" selection-start="23" selection-end="33" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -61,7 +62,16 @@
       <file leaf-file-name="content_heading.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/templates/content_heading.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="56" selection-start="56" selection-end="56" vertical-scroll-proportion="-0.0">
+            <state line="12" column="0" selection-start="642" selection-end="642" vertical-scroll-proportion="-8.5">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_page.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/test_page.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="136" column="53" selection-start="4691" selection-end="4691" vertical-scroll-proportion="4.6872144">
               <folding />
             </state>
           </provider>
@@ -70,25 +80,7 @@
       <file leaf-file-name="test_page_generation_spec.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/specs/test_page_generation_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="210" column="0" selection-start="6846" selection-end="6846" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="page.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/HomePage/HelloTest/page.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="8" selection-start="533" selection-end="533" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_page.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/test_page.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="114" column="52" selection-start="3889" selection-end="3889" vertical-scroll-proportion="0.0">
+            <state line="269" column="41" selection-start="9369" selection-end="9394" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -97,16 +89,7 @@
       <file leaf-file-name="pimp_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/pimp_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="132" column="15" selection-start="4191" selection-end="4191" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="page.yml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/root/HomePage/page.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="105" selection-start="264" selection-end="264" vertical-scroll-proportion="0.036247335">
+            <state line="132" column="67" selection-start="4336" selection-end="4336" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -115,7 +98,16 @@
       <file leaf-file-name="page_element.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/templates/page_element.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="112" selection-start="3588" selection-end="3588" vertical-scroll-proportion="-12.791667">
+            <state line="34" column="9" selection-start="1993" selection-end="1993" vertical-scroll-proportion="-5.2083335">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fixture_table.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/templates/fixture_table.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="33" selection-start="238" selection-end="238" vertical-scroll-proportion="-2.125">
               <folding />
             </state>
           </provider>
@@ -141,22 +133,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/lib/templates/fixture_repository.html.erb" />
         <option value="$PROJECT_DIR$/root/public/scripts/dragdrop.js" />
-        <option value="$PROJECT_DIR$/lib/templates/fixture_table.html.erb" />
         <option value="$PROJECT_DIR$/lib/templates/insert_point.html.erb" />
         <option value="$PROJECT_DIR$/root/public/scripts/pimp_scripts.js" />
-        <option value="$PROJECT_DIR$/root/public/layout/main_layout.html.erb" />
-        <option value="$PROJECT_DIR$/root/public/stylesheets/active_sheet.css" />
-        <option value="$PROJECT_DIR$/lib/test_object.rb" />
-        <option value="$PROJECT_DIR$/lib/templates/content_heading.html.erb" />
-        <option value="$PROJECT_DIR$/test/specs/test_page_generation_spec.rb" />
         <option value="$PROJECT_DIR$/root/HomePage/HelloTest/page.yml" />
+        <option value="$PROJECT_DIR$/root/public/layout/main_layout.html.erb" />
         <option value="$PROJECT_DIR$/test/HomePage/HelloTest/page.yml" />
+        <option value="$PROJECT_DIR$/lib/test_object.rb" />
         <option value="$PROJECT_DIR$/lib/pimp_controller.rb" />
+        <option value="$PROJECT_DIR$/lib/templates/content_heading.html.erb" />
+        <option value="$PROJECT_DIR$/root/HomePage/page.yml" />
+        <option value="$PROJECT_DIR$/lib/templates/text_element.html.erb" />
+        <option value="$PROJECT_DIR$/lib/templates/fixture_table.html.erb" />
+        <option value="$PROJECT_DIR$/root/public/stylesheets/active_sheet.css" />
+        <option value="$PROJECT_DIR$/test/specs/test_page_generation_spec.rb" />
         <option value="$PROJECT_DIR$/lib/test_page.rb" />
         <option value="$PROJECT_DIR$/lib/templates/page_element.html.erb" />
-        <option value="$PROJECT_DIR$/root/HomePage/page.yml" />
       </list>
     </option>
   </component>
@@ -320,6 +312,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -438,6 +431,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pimp_test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pimp_test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="root" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="HomePage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -461,6 +472,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="HelloTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pimp_test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pimp_test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="root" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HomePage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HelloTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FirstChild" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -498,7 +535,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Favorites" />
     </panes>
   </component>
@@ -517,85 +553,16 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="94" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="766" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="773" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="766" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="87" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="109" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
-  <component name="RunManager" selected="RSpec.Create Test Page should be able to add a new header to a page">
-    <configuration default="false" name="Parse a fixture should create fixture meta data from comments" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
-      <predefined_log_file id="RUBY_RSPEC" enabled="true" />
-      <module name="pimp_test" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e STDOUT.sync=true;STDERR.sync=true;load($0=ARGV.shift)" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$/test" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="$PROJECT_DIR$/test" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/test/fixture_parser_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="[none]" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="Parse a fixture should create fixture meta data from comments" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
-      <RunnerSettings RunnerId="RubyRunner" />
-      <ConfigurationWrapper RunnerId="RubyRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="fixture_parser_spec" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
-      <predefined_log_file id="RUBY_RSPEC" enabled="true" />
-      <module name="pimp_test" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e STDOUT.sync=true;STDERR.sync=true;load($0=ARGV.shift)" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$/test" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="$PROJECT_DIR$/test" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/test/fixture_parser_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="[none]" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
-      <RunnerSettings RunnerId="RubyRunner" />
-      <ConfigurationWrapper RunnerId="RubyRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Create Test Page should be able to add a new child page page" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
-      <predefined_log_file id="RUBY_RSPEC" enabled="true" />
-      <module name="pimp_test" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e STDOUT.sync=true;STDERR.sync=true;load($0=ARGV.shift)" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$/test" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="$PROJECT_DIR$/test" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/test/specs/test_page_generation_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="[none]" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="Create Test Page should be able to add a new child page page" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
-      <RunnerSettings RunnerId="RubyRunner" />
-      <ConfigurationWrapper RunnerId="RubyRunner" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="RSpec.Create Test Page should be able to determine the next available name and position for an element">
     <configuration default="false" name="Create Test Page should be able to add a new text block to a page" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
       <predefined_log_file id="RUBY_RSPEC" enabled="true" />
       <module name="pimp_test" />
@@ -633,6 +600,75 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="[none]" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="Create Test Page should be able to add a new header to a page" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
+      <RunnerSettings RunnerId="RubyRunner" />
+      <ConfigurationWrapper RunnerId="RubyRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Create Test Page should be able to edit a header on a page" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
+      <predefined_log_file id="RUBY_RSPEC" enabled="true" />
+      <module name="pimp_test" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e STDOUT.sync=true;STDERR.sync=true;load($0=ARGV.shift)" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$/test" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="$PROJECT_DIR$/test" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/test/specs/test_page_generation_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="[none]" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="Create Test Page should be able to edit a header on a page" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
+      <RunnerSettings RunnerId="RubyRunner" />
+      <ConfigurationWrapper RunnerId="RubyRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Create Test Page should be able to edit a text element on the page" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
+      <predefined_log_file id="RUBY_RSPEC" enabled="true" />
+      <module name="pimp_test" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e STDOUT.sync=true;STDERR.sync=true;load($0=ARGV.shift)" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$/test" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="$PROJECT_DIR$/test" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/test/specs/test_page_generation_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="[none]" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="Create Test Page should be able to edit a text element on the page" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
+      <RunnerSettings RunnerId="RubyRunner" />
+      <ConfigurationWrapper RunnerId="RubyRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Create Test Page should be able to determine the next available name and position for an element" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
+      <predefined_log_file id="RUBY_RSPEC" enabled="true" />
+      <module name="pimp_test" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e STDOUT.sync=true;STDERR.sync=true;load($0=ARGV.shift)" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$/test" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="$PROJECT_DIR$/test" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/test/specs/test_page_generation_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="[none]" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="Create Test Page should be able to determine the next available name and position for an element" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
@@ -715,11 +751,11 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="RSpec.Parse a fixture should create fixture meta data from comments" />
-      <item index="1" class="java.lang.String" itemvalue="RSpec.fixture_parser_spec" />
-      <item index="2" class="java.lang.String" itemvalue="RSpec.Create Test Page should be able to add a new child page page" />
-      <item index="3" class="java.lang.String" itemvalue="RSpec.Create Test Page should be able to add a new text block to a page" />
-      <item index="4" class="java.lang.String" itemvalue="RSpec.Create Test Page should be able to add a new header to a page" />
+      <item index="0" class="java.lang.String" itemvalue="RSpec.Create Test Page should be able to add a new text block to a page" />
+      <item index="1" class="java.lang.String" itemvalue="RSpec.Create Test Page should be able to add a new header to a page" />
+      <item index="2" class="java.lang.String" itemvalue="RSpec.Create Test Page should be able to edit a header on a page" />
+      <item index="3" class="java.lang.String" itemvalue="RSpec.Create Test Page should be able to edit a text element on the page" />
+      <item index="4" class="java.lang.String" itemvalue="RSpec.Create Test Page should be able to determine the next available name and position for an element" />
     </list>
     <configuration default="true" type="TestUnitRunConfigurationType" factoryName="Ruby test">
       <module name="" />
@@ -767,16 +803,16 @@
     <supportedVersion>125</supportedVersion>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-30" y="79" width="1240" height="930" extended-state="0" />
+    <frame x="1505" y="29" width="1198" height="841" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21735537" sideWeight="0.6546584" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2753825" sideWeight="0.99915826" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33664596" sideWeight="0.9955674" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2354452" sideWeight="0.6927374" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31564245" sideWeight="0.99915826" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29748604" sideWeight="0.9948498" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49859154" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -828,110 +864,110 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/templates/fixture_table.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="869" selection-end="869" vertical-scroll-proportion="-14.916667" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/root/public/scripts/builder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/templates/breadcrumb.html.erb">
+    <entry file="file://$PROJECT_DIR$/lib/pimp_test.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/root/public/scripts/pimp_scripts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="184" column="13" selection-start="7697" selection-end="7697" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/root/public/layout/main_layout.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="13" selection-start="1723" selection-end="1723" vertical-scroll-proportion="-28.708334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/specs/test_page_generation_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="210" column="0" selection-start="6846" selection-end="6846" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/HomePage/HelloTest/page.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="8" selection-start="533" selection-end="533" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pimp_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/root/public/stylesheets/active_sheet.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="22" selection-start="573" selection-end="573" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/test_object.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="29" selection-start="875" selection-end="875" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/templates/content_heading.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="56" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/test_page.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="52" selection-start="3889" selection-end="3889" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/templates/page_element.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="112" selection-start="3588" selection-end="3588" vertical-scroll-proportion="-12.791667">
+        <state line="24" column="15" selection-start="603" selection-end="603" vertical-scroll-proportion="-17.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/root/HomePage/HelloTest/page.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="8" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0">
+        <state line="25" column="8" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/HomePage/HelloTest/page.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="212" selection-end="212" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/pimp_controller.rb">
+    <entry file="file://$PROJECT_DIR$/lib/test_object.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="15" selection-start="4191" selection-end="4191" vertical-scroll-proportion="0.0">
+        <state line="37" column="41" selection-start="776" selection-end="776" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/HomePage/page.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="39" selection-start="40" selection-end="686" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/templates/fixture_table.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="33" selection-start="238" selection-end="238" vertical-scroll-proportion="-2.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/root/public/stylesheets/active_sheet.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="204" column="21" selection-start="3275" selection-end="3275" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/test_page_generation_spec.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="269" column="41" selection-start="9369" selection-end="9394" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/root/HomePage/page.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="105" selection-start="264" selection-end="264" vertical-scroll-proportion="0.036247335">
+        <state line="10" column="7" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/root/HomePage/HelloTest/FirstChild/page.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/templates/text_element.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="33" selection-start="23" selection-end="33" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/templates/content_heading.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="642" selection-end="642" vertical-scroll-proportion="-8.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/templates/page_element.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="9" selection-start="1993" selection-end="1993" vertical-scroll-proportion="-5.2083335">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pimp_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="132" column="67" selection-start="4336" selection-end="4336" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/test_page.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="136" column="53" selection-start="4691" selection-end="4691" vertical-scroll-proportion="4.6872144">
           <folding />
         </state>
       </provider>

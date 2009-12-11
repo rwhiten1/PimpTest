@@ -19,6 +19,13 @@
    background: #ccffcc; 
 }
 
+.heading{
+   border-width: 0px 0px 1px 0px;
+   border-style: solid;
+   border-color: #909090;
+   cursor: pointer;
+}
+
 .left{
    /*float: left;*/
    position: absolute;
@@ -37,8 +44,8 @@
 .table {
      height: auto;
      margin: 1px 10px 2px 2px;
-     /*border: 1px solid #000000;*/
-    padding-bottom: 1px;
+     border: 1px solid #666666;
+     padding-bottom: 1px;
 }
 
 .table table{
@@ -47,6 +54,7 @@
     border-width: 0px 1px 1px 0px;
     border-style: solid;
     border-color: #000000;
+    font-size:80%;
 }
 
 .table table td{
@@ -59,8 +67,14 @@
 
 .text {
     margin: 1px 1px 1px 2px;
+    padding: 0px 0px 0px 0px;
     /*border: 1px solid #000000;*/
 
+}
+
+
+.text-element{
+    cursor: pointer;
 }
 
 .white-text{
@@ -94,9 +108,9 @@
 .insert_div{
     width: 40%;
     position: relative;
-    left: 5%;
+    left: 0%;
     top: .25%;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
 .insert_point{
@@ -107,8 +121,9 @@
 
 .insert_list{
     display: inline;
-    padding: 0 0 0 0;
-    
+    padding: 5px 5px 5px 5px;
+    height: 100%;
+
 }
 
 .insert_list li{
@@ -116,23 +131,25 @@
     list-style-type: none;
     text-align: center;
     margin-right: 10px;
-    border-width: 0px 2px 0px 2px;
+    /*margin-top: 12px;*/
+    padding: 1px 1px 1px 1px;
+    border-width: 0px 1px 0px 1px;
     border-style: solid;
     border-color: #ccffcc;
+    background: #ccffcc;
 }
 
 .insert_list li p{
     display: inline;
     background: #ccffcc;
     text-align: center;
-    border-width: 0px 2px 0px 2px;
+    border-width: 0px 1px 0px 1px;
     border-style: solid;
     border-color: #ccffcc;
-    padding: 2px 2px 2px 2px;
+    padding: 4px 2px 3px 2px;
     font-family: "Verdana","Georgia","Helvittica";
     font-weight: bold;
 	font-size: 80%;
-	margin-top: 10px;
     cursor: pointer;
 
 }
@@ -146,19 +163,20 @@
     border-style: dashed;
     border-color: #666666;
     background: #ccffcc;
-    margin-bottom: 10px;  
+    margin-bottom: 20px;  
 }
 
 .container_style form{
    margin-left: 20px;
    font-size: small;
-   margin-top: 10px;
+   margin-top: 5px;
+   margin-bottom: 5px;
 }
 
 .add_text_container{
 
     position: relative;
-    left: 5%;
+    left: 0%;
     top: 2%;
     width: 760px;
 }
@@ -169,7 +187,7 @@
 
 .add_header_container{
     position: relative;
-    left: 5%;
+    left: 0%;
     top: 1%;
     width: 760px;
  }
@@ -179,12 +197,12 @@
 }
 
 
-
 .table-button {
     display: inline;
     float:right;
     margin-right: 5px;
     margin-top: 4px;
+    margin-left: 5px;
 }
 
 .table thead td{

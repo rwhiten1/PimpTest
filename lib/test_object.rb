@@ -30,11 +30,14 @@ class TestObject
   end
 
   def create_text
-    text = @object_hash[:content]
+    #text = @object_hash[:content]
     #replace all newlines with <br> tags
-    text.gsub!("\n","<br/>")
+    #text.gsub!("\n","<br/>")
     #wrap it in a paragraph tag.
-    text = "<p>#{text}</p>"
+    #text = "<p>#{text}</p>"
+    template = get_template("text_element.html.erb")
+    rhtml = ERB.new(template)
+    rhtml.result(get_binding)
   end
 
   def create_heading

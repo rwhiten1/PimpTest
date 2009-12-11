@@ -34,9 +34,15 @@ module Controllers
       puts "REQUEST_PATH => #{path}"
       if path != "/"
         req = Rack::Request.new(env)
+         puts "\n\t+++++++++++++++++++++++++++++++++++++++++++++"
+        puts "\n\tRequest parameters:"
+        req.params.each {|k,v| puts "\n\t#{k} => #{v}"}
+        puts "\n\t+++++++++++++++++++++++++++++++++++++++++++++"
+
         #run an action based on the request path.  If the request path doesn't contain
         #a public method, then it will defualt to executing the render method.
         html = run_action(req,env)
+
         if html != "" then
           resp = Rack::Response.new()
           resp.write(html)
@@ -137,6 +143,26 @@ module Controllers
       h[:type] = :heading
       page = TestPage.new(h[:path])
       html = page.add_element(h)
+      html
+    end
+
+    def edit_header(req,env)
+      h = Hash.new
+      h[:header] = req.params["header"]
+      h[:name]  = req.params["elem"]
+      h[:path] = @location[0...@location.size-12]
+      page = TestPage.new(h[:path])
+      html = page.edit_header(h)
+      html
+    end
+
+    def edit_text(req,env)
+      h = Hash.new
+      h[:text] = req.params["text"]
+      h[:name] = req.params["elem"]
+      h[:path] = @location[0...@location.size-10]
+      page = TestPage.new(h[:path])
+      html = page.edit_text(h)
       html
     end
 
