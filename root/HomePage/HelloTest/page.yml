@@ -22,19 +22,6 @@
 
   :type: text
   :name: text_1
-:text_3: 
-  :content: "Here is some more text. Don't put any HTML in there!\n\
-    Multiple lines are working\n\
-    I think.\n    "
-  :type: text
-  :name: text_3
 :order: 
 - text_1
-- text_2
-- text_3
 - table_1
-:text_2: 
-  :type: text
-  :content: "So, I am trying to get this text to get lined up right.\n\
-    Why is it not working?\n    "
-  :name: text_2

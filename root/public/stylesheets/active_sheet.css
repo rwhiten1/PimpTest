@@ -2,7 +2,7 @@
     padding-top: 1px;
     padding-left: 1px;
     position:absolute;
-    top: 200px;
+    top: 110px;
     left: 290px;
     width: 70%;
     height: 100%;
@@ -23,13 +23,13 @@
    /*float: left;*/
    position: absolute;
    left: 10px;
-   top: 200px;
+   top: 80px;
    width: 250px;
    height: 100%;
    margin-left: 0px;
    margin-right: 0px;
    padding-top: 1em;
-   border-width: 0px 2px 0px 0px;
+   border-width: 0px 1px 0px 0px;
    border-style: solid;
    border-color: #909090;
 }
@@ -96,6 +96,7 @@
     position: relative;
     left: 5%;
     top: .25%;
+    margin-bottom: 5px;
 }
 
 .insert_point{
@@ -268,11 +269,13 @@ div#menu {
     /*float: right;*/
     /*padding-top: 120px;*/
     position:relative;
-    top: 80px;
-    left: 50%;
+    top: 7px;
+    left: 60%;
     margin-top: 0px;
-    width: 600px;
-    background: #006666;
+    margin-bottom: 0px;
+    width: 500px;
+    /*background: #006666;*/
+    background-color:transparent
    
 }
 
@@ -298,22 +301,12 @@ ul#nav li {
 
 ul#nav a {
     width: auto;
-    padding: 10px 20px 10px 20px;
+    padding: 2px 20px 10px 20px;
     height: 10%;
     background: #E7F1F8;
     text-decoration: none;
-    color: #666
-}
-
-ul#nav li a:hover, ul#nav li:hover a {
-    /*background: #FFA826;*/
-    /*color: #FFF*/
-}
-
-
-ul#nav li.activelink a, ul#nav li.activelink a:hover {
-    background: #FFF;
-    color: #003
+    color: #666;
+    font-size: 80%;
 }
 
 #header{
@@ -321,7 +314,7 @@ ul#nav li.activelink a, ul#nav li.activelink a:hover {
     top: 0px;
     left: 0px;
     width: 100%;
-    height: 180px;
+    height: 80px;
     background: #006666;
     margin-bottom: 20px;
 }
@@ -338,9 +331,17 @@ ul#nav li.activelink a, ul#nav li.activelink a:hover {
 }
 
 #breadcrumb {
-    width: 80%;
-    float: left;
-    margin-top: 50px;
+    position:absolute;
+    top: 78px;
+    left: 290px;
+    width: 75%;
+    margin-top: 2px;
+    padding-bottom: 4px;
+    padding-top: 2px;
+    border-width: 0px 1px 1px 1px;
+    border-style: dashed;
+    border-color: #666;
+    background: #ccffcc;
 }
 
 #breadcrumb ul{
@@ -354,32 +355,32 @@ ul#nav li.activelink a, ul#nav li.activelink a:hover {
 }
 
 #breadcrumb li {
-    float: left;
     /*margin-right: 3px;*/
     display: inline;
     text-align: center;
-    color: #FFF;
+    color: #000000;
     /*width: 7em;*/
 }
 
 #breadcrumb li a {
-    color: #FFF;
+    color: #000000;
     width: auto;
     padding: 1px;
     text-align: center;
-    font-size: small;
+    font-size: 70%;
 }
 
 #page_name_div{
    background: #FFA826;;
-   width: 22%;
-   margin-top: 5px;
-   height: 10%;
-   padding: 10px;
+   width: 200px;
+   margin-top: 0px;
+   height: 70px;
+   padding: 15px;
+   padding-top: 10px;
    z-index: 2;
    position:absolute;
-    top: 160px;
-    left: 50%;
+    top: 77px;
+    left: 60%;
 }
 
 #page_name_div form{

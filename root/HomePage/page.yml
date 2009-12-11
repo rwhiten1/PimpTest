@@ -1,8 +1,11 @@
 --- 
-:order: 
-- text_1
-- text_2
+:head_1: 
+  :type: heading
+  :content: A Brand New Header!
+  :name: head_1
+  :size: "2"
 :text_1: 
+  :type: text
   :content: |-
     Hello, welcome to PimpTest - get ready to Pimp Your Tests!!!
      PimpTest is meant to be an improvement over the FitNesse wiki.
@@ -12,9 +15,31 @@
      If that isn't enough, it is fully extendable so you can add any type of UI widget
      that you would like to be able to insert on a page.  Prepare to make it rain, 
      dollar-dollar bill y'all.  word.
-  :type: text
   :name: text_1
 :text_2: 
-  :content: New text on the home page.
   :type: text
+  :content: "I am adding some new text to this page.  I need to make sure the backend can gaurd against HTML characters.  it didn't seem to like that to begin with.\r\n    "
   :name: text_2
+:order: 
+- text_1
+- head_1
+- text_2
+- table_1
+:table_1: 
+  :type: table
+  :class: ftp_receive_fixture
+  :content: 
+  - - sender
+    - receiver
+    - msgclass
+    - address
+    - filename
+    - receive_text_data()
+  - - aSender
+    - aRecvr
+    - SOMECLS
+    - 10.160.9.51
+    - /some/file/data
+    - "true"
+    - OK
+  :name: table_1

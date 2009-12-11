@@ -26,7 +26,7 @@
 
 
 <div id="insert_<%= @component.get_name %>_header" class="add_header_container container_style" style="display: none;">
-  <form method="post" action="<%= @location%>/add_header">
+  <form method="post" action="<%= @location%>/add_header" id="insert_<%= @component.get_name%>_header_form">
     <label for="header" id="hdr_label">Enter Header Text</label>
     <input type="text" name="header" value=""/>
     <input type="hidden" name="after" value="<%= @component.get_name%>"/>
@@ -52,7 +52,8 @@
    $('insert_hdr_<%= @component.get_name%>_p').onclick = displayWidgetHandler;
    $('insert_<%= @component.get_name %>_container').onmouseover = showInsert;
    $('insert_<%= @component.get_name %>_container').onmouseout = hideInsert;
-  //This contains the Ajax request that will submit the form
+
+   //This contains the Ajax request that will submit add text the form
   $('insert_<%= @component.get_name%>_text_form').onsubmit = function(){
                         new Ajax.Updater('insert_<%= @component.get_name %>_header','<%= @location %>/add_text',{
                                           parameters: $('insert_<%= @component.get_name%>_text_form').serialize(true),
@@ -61,6 +62,18 @@
                                           insertion: 'after'});
 						//Hide the form
 						displayWidget('insert_<%= @component.get_name %>_text');
+      					return false;
+      }
+
+   //This contains the Ajax request that will submit the add header form
+  $('insert_<%= @component.get_name%>_header_form').onsubmit = function(){
+                        new Ajax.Updater('insert_<%= @component.get_name %>_header','<%= @location %>/add_header',{
+                                          parameters: $('insert_<%= @component.get_name%>_header_form').serialize(true),
+                                          method: 'post',
+										  evalScripts: true,
+                                          insertion: 'after'});
+						//Hide the form
+						displayWidget('insert_<%= @component.get_name %>_header');
       					return false;
       }
 </script>

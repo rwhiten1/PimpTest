@@ -37,6 +37,12 @@ class TestObject
     text = "<p>#{text}</p>"
   end
 
+  def create_heading
+    template = get_template("content_heading.html.erb")
+    rhtml = ERB.new(template)
+    rhtml.result(get_binding)
+  end
+
   private
 
   def get_binding

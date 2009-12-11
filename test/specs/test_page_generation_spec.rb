@@ -188,6 +188,28 @@ FIX
       page_config[:order].size.should == 3
       page_config[:order][1].should == "text_2"
       #remove the new text element here.
+
+      page_config[:order].delete("text_2")
+      page_config.delete(:text_2)
+      File.open(File.dirname(__FILE__)+ "/../HomePage/HelloTest/page.yml","w") do |io|
+        YAML.dump(page_config,io)
+      end
+  end
+
+  it "should be able to add a new header to a page" do
+    page = TestPage.new("HomePage/HelloTest")
+    page.add_header_element({:header => "A New Heading!", :size => "4", :after=>"text_1"})
+    page_config = YAML::load(File.open(File.dirname(__FILE__)+ "/../HomePage/HelloTest/page.yml"))
+
+    page_config.key?(:head_1).should == true
+    page_config[:head_1][:content].should == "A New Heading!"
+    page_config[:head_1][:name].should == "head_1"
+    page_config[:head_1][:size].should == "4"
+    page_config[:head_1][:type].should == "heading"
+
+    #is the new text element in the right position?  (second in the order array)
+    page_config[:order].size.should == 3
+    page_config[:order][1].should == "head_1"
   end
 
 end

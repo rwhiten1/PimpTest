@@ -1,24 +1,7 @@
-#this is a YAML file!
-:order:
-  - text_1
-  - table_1
-:table_1:
-  :type: "table"
-  :class: "mock_fixture"
-  :name: "table_1"
-  :content:
-    - - var1
-      - var2
-      - var3
-      - var4
-      - run_this_method
-    - - data
-      - to
-      - put
-      - in test
-      - expected result
-:text_1:
-  :type: "text"
-  :name: "text_1"
-  :content:
-      "This is the second child page, sooo rad."
+--- 
+:order: 
+- text_1
+:text_1: 
+  :type: text
+  :name: text_1
+  :content: This is the second child page, sooo rad.

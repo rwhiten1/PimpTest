@@ -20,6 +20,7 @@ class TestPage
     template = get_template("page_element.html.erb");
     @order = @page[:order]
     @order.each_with_index do |o,i|
+      puts "Rendering page element: #{o}"
       @component = TestObject.new(@page[o.to_sym])
       rhtml = ERB.new(template);
       content += rhtml.result(get_binding)
@@ -111,9 +112,10 @@ class TestPage
   #a block of text, a header, or a blank table (with no associated fixture)
   def add_element(info)
     #get what type of element it is
+    puts "Adding element of type :#{info[:type].to_s}"
     if info[:type] == :text then
       add_text_element(info)
-    elsif info[:type] == :header then
+    elsif info[:type] == :heading then
       add_header_element(info)
     elsif info[:type] == :table then
       add_table_element(info)
@@ -142,6 +144,37 @@ class TestPage
     #generate the HTML and return it to the browser
     template = get_template("page_element.html.erb");
     @component = TestObject.new(@page["text_#{text_elems.size+1}".to_sym])
+    rhtml = ERB.new(template);
+    rhtml.result(get_binding)
+  end
+
+  #this method adds a header to the page and then returns the HTML containing the header
+  #so it may be displayed on the page
+  def add_header_element(info)
+    #first, find out where to insert the element <-- Candidate section for a refactor
+    position = @page[:order].index(info[:after]) + 1
+    #get an array of already present headers
+    head_elems = @page[:order].select{|e| e =~ /head/}
+    #insert into the order array
+    @page[:order].insert(position,"head_#{head_elems.size+1}")
+
+
+    #now, add the page to the hash
+    new_header = {:type => "heading",
+                  :name => "head_#{head_elems.size+1}",
+                  :size => info[:size],
+                  :content => info[:header]}
+    @page["head_#{head_elems.size+1}".to_sym] = new_header
+
+
+    #save the yaml file <-- Candidate section for a refactor
+    File.open(Dir.pwd + File::SEPARATOR + @location + "/page.yml", "w") do |io|
+      YAML::dump(@page,io)
+    end
+
+    #generate the HTML and return it to the browser <-- candidate for a refactor
+    template = get_template("page_element.html.erb");
+    @component = TestObject.new(@page["head_#{head_elems.size+1}".to_sym])
     rhtml = ERB.new(template);
     rhtml.result(get_binding)
   end

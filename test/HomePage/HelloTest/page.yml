@@ -1,12 +1,4 @@
 --- 
-:text_1: 
-  :type: text
-  :name: text_1
-  :content: |
-    This is some text that will go on the page.  It will be
-     stuck inside a paragraph tag.  All newlines will be replaced
-     with &lt;br&gt; tags.
-
 :table_1: 
   :type: table
   :class: mock_fixture
@@ -22,11 +14,20 @@
     - put
     - in test
     - expected result
-:text_2: 
+:head_1: 
+  :type: heading
+  :name: head_1
+  :content: A New Heading!
+  :size: "4"
+:text_1: 
   :type: text
-  :name: text_2
-  :content: This here is some brand new text for your page!
+  :name: text_1
+  :content: |
+    This is some text that will go on the page.  It will be
+     stuck inside a paragraph tag.  All newlines will be replaced
+     with &lt;br&gt; tags.
+
 :order: 
 - text_1
-- text_2
+- head_1
 - table_1

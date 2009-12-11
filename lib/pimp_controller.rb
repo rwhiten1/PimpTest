@@ -128,6 +128,18 @@ module Controllers
       html
     end
 
+    def add_header(req,env)
+      h = Hash.new
+      h[:header] = req.params["header"]
+      h[:after] = req.params["after"]
+      h[:size] = req.params["size"]
+      h[:path] = @location[0...@location.size-11]
+      h[:type] = :heading
+      page = TestPage.new(h[:path])
+      html = page.add_element(h)
+      html
+    end
+
     def delete_element(request, env)
       #pull out the params
       h = {:element => request.params["element"]}
