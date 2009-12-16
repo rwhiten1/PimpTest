@@ -1,8 +1,12 @@
 --- 
+:head_2: 
+  :type: heading
+  :content: Textile Test
+  :location: /HomePage
+  :name: head_2
+  :size: "3"
 :text_1: 
   :type: text
-  :location: HomePage
-  :name: text_1
   :content: |-
     Hello, welcome to PimpTest - get ready to Pimp Your Tests!!!
      PimpTest is meant to be an improvement over the FitNesse wiki.
@@ -12,32 +16,33 @@
      If that isn't enough, it is fully extendable so you can add any type of UI widget
      that you would like to be able to insert on a page.  Prepare to make it rain, 
      dollar-dollar bill y'all.  word.
+  :location: /HomePage
+  :name: text_1
+:text_2: 
+  :type: text
+  :content: "h1. Textile Test\n\n\
+    h1. This is a Big Big Heading\n\
+    h2. This is a smaller Heading\n\n\
+    This is a bit of text that will be followed by a block quote\n\
+    bq. This is a block quote, it should be indented and italicized\n\n\
+    A bulletted, nested list\n\
+    * list item 1, top level\n\
+    * list item 2, top level\n\
+    * sub list item1, second level\n\
+    again, top level\n\
+    * Second level\n\
+    ** Third level\n\n\
+    Here is a numbered list\n\
+    # one\n\
+    # two\n\
+    ## one\xE2\x86\x92one\n\
+    ## one\xE2\x86\x92two\n\n\
+    Here is a table\n\n\
+    |_. This Is|_. A Heading Row|\n\
+    |cell1|cell2|\n    "
+  :location: /HomePage
+  :name: text_2
 :order: 
 - text_1
-- head_1
-- table_1
-:table_1: 
-  :type: table
-  :class: ftp_receive_fixture
-  :location: /HomePage
-  :name: table_1
-  :content: 
-  - - sender
-    - receiver
-    - msgclass
-    - address
-    - filename
-    - receive_text_data()
-  - - aSender
-    - aRecvr
-    - SOMECLS
-    - 10.160.9.51
-    - /some/file/data
-    - "true"
-    - OK
-:head_1: 
-  :type: heading
-  :location: HomePage
-  :name: head_1
-  :content: This is a test table
-  :size: "4"
+- head_2
+- text_2

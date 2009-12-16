@@ -9,6 +9,7 @@ class TestPage
     @root_dir = config[:root_dir]
     Dir.chdir(current)
     @location = location
+    puts "\t Current Location: #{@location}"
     #get the order.yml file out of the page's directory
     @page = YAML::load(File.open(File.dirname(__FILE__) + File::SEPARATOR + @root_dir+ File::SEPARATOR + location + File::SEPARATOR + "page.yml"))
   end
@@ -101,9 +102,49 @@ class TestPage
     save_page
 
     #now, create an HTML version of the new fixture and return that
-    html = "<div class=\"#{new_fixture[:type]}\ black-border\" id=\"#{new_fixture[:type]}_#{types.size + 1}\">"
+    html = "<div class=\"#{new_fixture[:type]}\ black-border\" id=\"#{elem_name}\">"
     html += TestObject.new(new_fixture).to_html
     html += "</div>"
+  end
+
+
+  #This method returns the compiled template for editing a table.
+  def edit_table(info)
+    #process_element(info[:name].to_sym,"fixture_table_edit.html.erb")
+    @component = TestObject.new(@page[info[:name].to_sym])
+    @component.edit_table
+  end
+
+  #this method cancels an edit by just returning the table in its non-editable form
+  def get_table(info)
+    @component = TestObject.new(@page[info[:name].to_sym])
+    @component.to_html
+  end
+
+  #this method adds a new blank row to a table
+  def add_table_row(info)
+    @component = TestObject.new(@page[info[:name].to_sym])
+    html = @component.add_table_row(info[:index])
+    save_page
+    html
+  end
+
+  #this method deletes a row from a table
+  def delete_table_row(info)
+    @component = TestObject.new(@page[info[:name].to_sym])
+    html = @component.delete_table_row(info[:index])
+    save_page
+    html
+  end
+
+  #this method will save the table name
+  def save_table(info)
+    table = info[:name].to_sym
+    @page[table][:content] = info[:content]
+    save_page
+    @component = TestObject.new(@page[table])
+    html = @component.to_html
+    html
   end
 
   #This method adds a vanilla element to the page.  Its either going to be
@@ -126,16 +167,17 @@ class TestPage
     position = @page[:order].index(info[:after]) + 1 #put it right 'after' that one
     #count up the number of text elements
     elem_name = make_new_name("text",@page[:order])
+    puts "\tMaking new text element with name: #{elem_name}"
     @page[:order].insert(position,elem_name)
 
     #now, add the text to the page hash
     new_text = {:type => "text",
                 :name => elem_name,
                 :location => @location,
-                :content => info[:text].gsub("\n","<br/>")}
-    if new_text[:location][0] != "/" then
-      new_text[:location] = "/" + new_text[:location]
-    end
+                :content => info[:text]}
+    #if new_text[:location][0] != "/" then
+    #  new_text[:location] = "/" + new_text[:location]
+    #end
     @page[elem_name.to_sym] = new_text
 
     #and save the yaml file
@@ -185,9 +227,9 @@ class TestPage
   #this method edits a text element and returns the text to the controller
   def edit_text(info)
     #replace any new lines with <br/> tags
-    @page[info[:name].to_sym][:content] = info[:text].gsub("\n","<br/>")
+    @page[info[:name].to_sym][:content] = info[:text]
     save_page
-    @page[info[:name].to_sym][:content]
+    RedCloth.new(@page[info[:name].to_sym][:content]).to_html
   end
 
   def delete_element(del)
@@ -258,6 +300,10 @@ class TestPage
     binding
   end
 
+  def get_element_content(name)
+    @page[name][:content]
+  end
+
   private
 
   def save_page
@@ -267,7 +313,7 @@ class TestPage
   end
 
   def process_element(element,template)
-    #generate the HTML and return it to the browser <-- candidate for a refactor
+    #generate the HTML and return it to the browser
     template = get_template(template);
     @component = TestObject.new(@page[element])
     rhtml = ERB.new(template);

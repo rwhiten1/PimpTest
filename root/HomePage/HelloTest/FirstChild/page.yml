@@ -1,14 +1,19 @@
 --- 
-:text_2: 
-  :type: text
-  :location: /HomePage/HelloTest/FirstChild
-  :name: text_2
-  :content: Text 2, again.
 :order: 
 - text_1
-- text_2
 - head_1
 - table_1
+:head_1: 
+  :type: heading
+  :location: /HomePage/HelloTest/FirstChild
+  :name: head_1
+  :content: In place editing is just the coolest thing ever.
+  :size: "2"
+:text_1: 
+  :type: text
+  :location: /HomePage/HelloTest/FirstChild
+  :name: text_1
+  :content: This is a child page of the parent page, fantastic!
 :table_1: 
   :type: table
   :location: /HomePage/HelloTest/FirstChild
@@ -25,14 +30,3 @@
     - put
     - in test
     - expected result
-:text_1: 
-  :type: text
-  :location: /HomePage/HelloTest/FirstChild
-  :name: text_1
-  :content: This is a child page of the parent page, fantastic!
-:head_1: 
-  :type: heading
-  :location: /HomePage/HelloTest/FirstChild
-  :name: head_1
-  :content: Do the headings work?
-  :size: "2"

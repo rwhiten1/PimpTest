@@ -67,5 +67,35 @@ describe "Create Test Table Object" do
     name.should == "table_1"
   end
 
+  it "should be able to add a new blank row on the end of table" do
+    content = @t_obj.get_content
+    content.size.should == 2
+
+    #add a new row
+    html = @t_obj.add_table_row(2)
+    html.should != nil
+    html.should != ""
+    content.size.should == 3
+    content[2][0].should == " "
+    content[2].size.should == content[0].size
+  end
+
+  it "should be able to delete an existing row from the table" do
+    content = @t_obj.get_content
+    content.size.should == 2
+
+    #add a new row
+    html = @t_obj.add_table_row(1)
+    content.size.should == 3
+
+    #we should have rows 0,1,2, delete row one
+    content[1][0].should == " "
+    html = @t_obj.delete_table_row(1)
+    content.size.should == 2
+    content[1][0].should == "data"
+    html.should_not == nil
+    html.should_not == ""
+  end
+
   
 end

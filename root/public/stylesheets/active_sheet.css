@@ -57,6 +57,11 @@
     font-size:80%;
 }
 
+.loader{
+   display: inline;
+   /*float: left;*/
+}
+
 .table table td{
     border-color: #000000;
     border-width: 1px 0px 0px 1px;
@@ -75,6 +80,31 @@
 
 .text-element{
     cursor: pointer;
+}
+
+.text-element table{
+   border-width: 0px 1px 1px 0px;
+    border-style: solid;
+    border-color: #000000;
+    font-size:90%;
+    border-collapse: collapse;
+}
+
+.text-element table td{
+   border-color: #000000;
+    border-width: 1px 0px 0px 1px;
+    border-style: solid;
+    margin: 0px;
+    padding: 5px;
+}
+
+.text-element table th{
+  border-color: #000000;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    background: #C0C0C0;
+    font-weight: bold;
+    padding: 5px;
 }
 
 .white-text{

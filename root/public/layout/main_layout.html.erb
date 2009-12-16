@@ -33,18 +33,186 @@
       <script type="text/javascript" src="/scripts/controls.js"></script>
        <link rel="StyleSheet" href="/stylesheets/active_sheet.css" type="text/css" media="screen"/>
        <script type="text/javascript">
+
+          var hidden = new Array();
+          var test_edit = new Array();
+          var prog_indicator = "";
+
+          //Set up the global responder for showing/hiding progress indicators
+          //Remember to make sure that prog_indicator is set to the id of the element
+          //to show prior to initiating the AJAX request.
+          Ajax.Responders.register({
+              onCreate: function(){
+                  Element.show(prog_indicator);
+              },
+              onComplete: function(){
+                  Element.hide(prog_indicator);
+              }
+          });
+            function loadPimpElements(){
+                nested = document.getElementsByClassName('nested');
+                for(var i = 0; i < nested.length; i++){
+                    hidden[nested[i].id] = true;
+                }
+                //add the add page form id
+                hidden["page_name_div"] = true;
+
+               //find all the 'insert' divs
+                var inserts = document.getElementsByClassName('insert_div');
+                var insert_containers = document.getElementsByClassName('insert_point');
+
+                //find all the insert items
+                var insert_items = document.getElementsByClassName('insert_list_item');
+
+                //Now, find all the textarea and header forms
+                var text_divs = document.getElementsByClassName('add_text_container');
+                var header_divs = document.getElementsByClassName('add_header_container');
+
+                //find all the cancel buttons
+                var cancel_text = document.getElementsByClassName('cancel_text');
+                var cancel_header = document.getElementsByClassName('cancel_header');
+
+                //find all the add_header and add_text forms
+                var add_text_forms = document.getElementsByClassName('add_text_form');
+                var add_header_forms = document.getElementsByClassName('add_header_form');
+
+
+                //Add the insert divs, header divs, and text area divs to the hidden array.
+                //also give the containers on click handlers
+                var i = 0;
+                for(i = 0; i < inserts.length; i++){
+                  hidden[inserts[i].id] = true;
+                  hidden[text_divs[i].id] = true;
+                  hidden[header_divs[i].id] = true;
+                  insert_containers[i].onmouseover = showInsert;
+                  insert_containers[i].onmouseout = hideInsert;
+                  cancel_text[i].onclick = displayWidgetHandler;
+                  cancel_header[i].onclick = displayWidgetHandler;
+                }
+
+
+                for(i = 0; i < insert_items.length; i++){
+                    insert_items[i].onclick = displayWidgetHandler;
+                }
+
+                /*add ajax Updaters to the forms
+                for(i = 0; i <= add_text_forms.length -1; i++){
+                    add_text_forms[i].onsubmit = function(){
+                       new Ajax.Updater(header_divs[i].id,'/<%= @location %>/add_text',{
+                                          parameters: $(add_text_forms[i].id).serialize(true),
+                                          method: 'post',
+										  evalScripts: true,
+                                          onComplete: loadDomElments(),
+                                          insertion: 'after'});
+						//Hide the form
+						displayWidget(text_divs[i].id);
+      					return false;
+                    }
+                }
+
+                for(i = 0; i<= add_header_forms.length ; i++){
+                    add_header_forms[i].onsubmit = function(){
+                        new Ajax.Updater(header_divs[i].id,'/<%= @location %>/add_header',{
+                                          parameters: $(add_header_forms[i].id).serialize(true),
+                                          method: 'post',
+										  evalScripts: true,
+                                          onComplete: loadDomElments(),
+                                          insertion: 'after'});
+						//Hide the form
+						displayWidget(header_divs[i].id);
+      					return false;
+                    }
+                }
+
+                */
+
+
+            }
+
+            window.onload = loadPimpElements;
+
          function deleteElement(elem){
                 //create an Ajax POST request that will delete the element from the server
                 //and then update the entire content area
+             //onComplete: loadPimpElements
                 var params = {element: elem};
-                var url = "\/<%= @location %>\/delete_element";
-                new Ajax.Updater('content',url,{
+                var url = "/<%= @location %>/delete_element";
+                new Ajax.Request(url,{
                     method: 'post',
-                    parameters: params,
-                    onLoading: showLoad,
-                    onComplete: hideLoad
+                    parameters: params
                 });
+
+             //remove the container from the dom
+             var content = get_object('content');
+             var container = get_object(elem);
+             content.removeChild(container);
+             content.removeChild(get_object("insert_"+elem+"_container"));
+             content.removeChild(get_object("insert_"+elem+"_text"));
+             content.removeChild(get_object("insert_"+elem+"_header"));
+
             }
+
+
+            function editTable(container,elem){
+                //alert("Container is " + container + "\n Element is " + elem);
+                new Ajax.Updater(container,"/<%= @location %>/edit_table",{
+                    method: "get",
+                    parameters: {element: elem},
+                    evalScripts: true
+                });
+
+                return false;
+            }
+
+           function cancelEdit(container,elem){
+
+               new Ajax.Updater(container,"/<%= @location %>/cancel_edit",{
+                   method: "get",
+                   parameters: {element: elem},
+                   evalScripts: true
+               });
+
+               return false;
+           }
+
+            function addTableRow(container,i){
+                 new Ajax.Updater(container,"/<%= @location %>/add_table_row",{
+                    method: "post",
+                    parameters: {element: container, index: i},
+                    evalScripts: true
+                });
+
+                return false;
+            }
+
+            function delTableRow(container,i){
+                new Ajax.Updater(container,"/<%= @location %>/delete_table_row",{
+                    method: "post",
+                    parameters: {element: container, index: i},
+                    evalScripts: true
+                });
+
+                return false;
+            }
+
+            function saveTable(form,container){
+                prog_indicator = container + "_progress";
+                //alert("Submitting Form " + form + "\n to update " + container); 
+                new Ajax.Updater(container,"/<%= @location %>/save_table",{
+                    method: "post",
+                    parameters: $(form).serialize(true),
+                    evalScripts: true,
+                    onLoading: function(){
+                        $(prog).show();
+                    }
+
+                });
+
+                prog_indicator = "";
+                return false;
+            }
+
+           
        </script>
 
 	

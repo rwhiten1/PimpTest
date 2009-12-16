@@ -1,0 +1,52 @@
+<%  text = @object_hash[:content]%>
+<a class="table-button"><img  src="/images/play_button_small.png" alt="run tests"/></a>
+<!-- <a class="table-button"><img src="/images/edit_small.png" alt="Save table"/></a>  -->
+<a class="table_button red-border" onclick="javascript: deleteElement('<%= @object_hash[:name] %>')">X</a>
+<p>Fixture Class: <strong><%= @object_hash[:class] %></strong></p>
+<form id="edit_<%= @object_hash[:name]%>_form" method="post" action="invalid" onsubmit="javascript: saveTable(this.id,'<%= @object_hash[:name]%>'); return false;">
+  <input type="hidden" name="rows" value="<%= @object_hash[:content].size %>" />
+  <input type="hidden" name="cols" value="<%= @object_hash[:content][0].size %>" />
+  <input type="hidden" name="element" value="<%= @object_hash[:name] %>" />
+<table cellpadding="0" cellspacing="0" id="<%= @object_hash[:name]%>_table">
+    <thead>
+        <tr>
+          <td>Add/Delete Rows</td> <!-- an empty td to fill out the row? -->
+           <% count = 0 %>
+            <% text[0].each do |cell|%>
+            <% if cell != "" then %>
+                <td><%= cell %></td>
+                <input type="hidden" name="row_0_col_<%= count %>" value="<%= cell %>"/>
+                <% count += 1 %>
+            <% end %>
+          <% end %>
+
+        </tr>
+    </thead>
+    <% 1.upto(text.size - 1) do |i| %>
+       <tr>
+         <% if i < text.size - 1 then %>
+              <td>
+                <input type="button" name="insert_row" value="+" onclick="javascript: addTableRow('<%= @object_hash[:name] %>','<%= i + 1 %>');"/>
+                <input type="button" name="del_row" value="-" onclick="javascript: delTableRow('<%= @object_hash[:name] %>','<%= i %>');"/>
+              </td>
+          <% else %>
+              <td>
+                <input type="button" name="insert_row" value="+" onclick="javascript: addTableRow('<%= @object_hash[:name] %>','<%= text.size %>');"/>
+                <input type="button" name="del_row" value="-" onclick="javascript: delTableRow('<%= @object_hash[:name] %>','<%= i %>');"/>
+              </td>
+          <% end %>
+         <% cells = text[i]
+            cells.each_with_index do |cell,j|%>
+            <% if cell != "" then %>
+                <td><input type="text" name="row_<%= i %>_col_<%= j %>" value="<%= cell %>"></td>
+            <% end %>
+          <% end %>
+
+        </tr>
+    <% end %>
+ </table>
+  <input type="submit" value="Save"/>
+  <input type="button" value="Cancel" id="cancel_<%= @object_hash[:name]%>_edit" onclick="javascript: cancelEdit('<%= @object_hash[:name] %>','<%= @object_hash[:name] %>');"/>
+  <div class='loader' id="<%= @object_hash[:name] %>_progress" style="display: none;"><img src='/images/ajax-loader.gif'/> </div>   
+</form>
+

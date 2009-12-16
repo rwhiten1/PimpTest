@@ -1,9 +1,10 @@
 <a class="table_button red-border" style="display: inline; float: right;" onclick="javascript: deleteElement('<%= @object_hash[:name] %>')">X</a>
-<p id="<%= @object_hash[:name] %>_text" class="text-element">
-  <%= @object_hash[:content]%>
-</p>
+<div id="<%= @object_hash[:name] %>_text" class="text-element">
+  <%= @content%>
+</div>
 
 <script type="text/javascript">
+
   new Ajax.InPlaceEditor('<%= @object_hash[:name]%>_text','<%= @object_hash[:location]%>/edit_text',
                             {callback: function(form,value){
                                var param = 'elem=' + <%= @object_hash[:name]%>.id;
@@ -12,5 +13,6 @@
                             },
                             rows: 10,
                             cols: 85,
+                            loadTextURL: '<%= @object_hash[:location] %>/get_unformated_text?elem=<%= @object_hash[:name] %>',
                             highlightcolor: "#eeffee"});
 </script>

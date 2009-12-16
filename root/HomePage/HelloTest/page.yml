@@ -1,21 +1,13 @@
 --- 
-:order: 
-- text_1
-- table_1
-:text_1: 
+:text_2: 
   :type: text
+  :content: "h3. EDI Send Table Info\n\n\
+    This table will eventually send some EDI data.  First, I have to wire the fixtures up to some sort of test runner.  Should I roll my own, or try to find one somewhere else.\n\n\
+    Also,  need to devise a plan for incorporating FitNesse fixtures (Ruby and Java) into this thing.  Maybe I should take a look at rubyfit?\n    "
   :location: /HomePage/HelloTest
-  :name: text_1
-  :content: |
-    This is some text that will go on the page.  It will be
-     stuck inside a paragraph tag.  All newlines will be replaced
-     with &lt;br&gt; tags.
-
+  :name: text_2
 :table_1: 
   :type: table
-  :location: /HomePage/HelloTest
-  :class: mock_fixture
-  :name: table_1
   :content: 
   - - var1
     - var2
@@ -27,3 +19,68 @@
     - put
     - in test
     - expected result
+  - - Interesting
+    - that
+    - the
+    - rows
+    - are acting strange
+  - - This
+    - is
+    - an
+    - empty
+    - row
+  - - One
+    - new
+    - row
+    - for
+    - the Table
+  - - This
+    - row
+    - got
+    - filled
+    - in
+  :class: mock_fixture
+  :location: /HomePage/HelloTest
+  :name: table_1
+:table_2: 
+  :type: table
+  :content: 
+  - - sender
+    - senderedi
+    - senderqual
+    - receiveredi
+    - receiverqual
+    - msgclass
+    - address
+    - filename
+    - type
+    - siteparm
+    - send_edi_data()
+  - - aSender
+    - sndedi
+    - sndqual
+    - recvedi
+    - recvqual
+    - SOMECLS
+    - 10.160.9.51
+    - /some/file/data
+    - x
+    - edialiasonly=>on
+    - OK
+  :location: /HomePage/HelloTest
+  :class: ftp_send_fixture
+  :name: table_2
+:order: 
+- text_1
+- table_1
+- text_2
+- table_2
+:text_1: 
+  :type: text
+  :content: |
+    This is some text that will go on the page.  It will be
+     stuck inside a paragraph tag.  All newlines will be replaced
+     with &lt;br&gt; tags.
+
+  :location: /HomePage/HelloTest
+  :name: text_1

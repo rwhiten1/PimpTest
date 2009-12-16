@@ -1,6 +1,6 @@
 <%  text = @object_hash[:content]%>
 <a class="table-button"><img  src="/images/play_button_small.png" alt="run tests"/></a>
-<a class="table-button"><img src="/images/edit_small.png" alt="edit table"/></a>
+<a class="table-button" onclick="javascript: editTable('<%= @object_hash[:name] %>','<%= @object_hash[:name] %>')"><img src="/images/edit_small.png" alt="edit table"/></a>
 <a class="table_button red-border" onclick="javascript: deleteElement('<%= @object_hash[:name] %>')">X</a>
 <p>Fixture Class: <strong>mock_fixture</strong></p>
 <table cellpadding="0" cellspacing="0">

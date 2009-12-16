@@ -44,6 +44,7 @@ module Controllers
         html = run_action(req,env)
 
         if html != "" then
+          puts "\t>>>>>HTML chunk is non-empty, passing back to the client....."
           resp = Rack::Response.new()
           resp.write(html)
           resp.finish
@@ -123,11 +124,86 @@ module Controllers
       html = page.add_fixture(h)
     end
 
+    #this method basically returns HTML to replace the current HTML on the page.  The replacement will
+    #contain a form where each text field represents a cell (with that cell's value), as well
+    #as buttons to insert rows (should probably be buttons to delete rows.
+    def edit_table(req,env)
+      h = {:name => req.params["element"], :path => @location[0...@location.size - 11]}
+      if !@location.match(/^\//) then
+        h[:path] = "/" + h[:path]
+      end
+      page = TestPage.new(h[:path])
+      html = page.edit_table(h)
+    end
+
+    #this method will add a blank row to the table being edited.
+    def add_table_row(req,env)
+      h = {:name => req.params["element"],
+           :index => req["index"].to_i,
+           :path => @location[0...@location.size - 14]}
+      if !@location.match(/^\//) then
+        h[:path] = "/" + h[:path]
+      end
+      page = TestPage.new(h[:path])
+      html = page.add_table_row(h)
+    end
+
+    #this method deletes a table row
+    def delete_table_row(req,env)
+      h = {:name => req.params["element"],
+           :index => req["index"].to_i,
+           :path => @location[0...@location.size - 16]}
+      fix_path(h)
+      page = TestPage.new(h[:path])
+      html = page.delete_table_row(h)
+    end
+
+    #this method "cancels" the edit by just retrieving the table, but in its non-editable form
+    def cancel_edit(req,env)
+      h = {:name => req.params["element"],
+           :path => @location[0...@location.size - 12]}
+      fix_path(h)
+      page = TestPage.new(h[:path])
+      html = page.get_table(h)
+    end
+
+    #this method parses the table fields out of the request, wraps them up into an array,
+    #and then passes the array of to the TestPage so that it can save the table.
+    def save_table(req,env)
+
+      rows = req["rows"].to_i
+      cols = req["cols"].to_i
+      #build the array
+      table = Array.new
+      0.upto(rows - 1) do |i|
+        row = Array.new
+        0.upto(cols - 1) do |j|
+          row[j] = req["row_#{i}_col_#{j}"]
+        end
+        table[i] = row
+      end
+
+      h = {:name => req["element"],
+           :content => table,
+           :path => @location[0...@location.size - 11]}
+
+      if !@location.match(/^\//) then
+        h[:path] = "/" + h[:path]
+      end
+
+      page = TestPage.new(h[:path])
+      html = page.save_table(h)
+      html
+    end
+
     def add_text(req,env)
       h = Hash.new
       h[:text] = req.params["text"]
       h[:after] = req.params["after"]
       h[:path] = @location[0...@location.size-9]
+      if !@location.match(/^\//) then
+        h[:path] = "/" + h[:path]
+      end
       h[:type] = :text
       page = TestPage.new(h[:path])
       html = page.add_element(h)
@@ -140,6 +216,9 @@ module Controllers
       h[:after] = req.params["after"]
       h[:size] = req.params["size"]
       h[:path] = @location[0...@location.size-11]
+      if !@location.match(/^\//) then
+        h[:path] = "/" + h[:path]
+      end
       h[:type] = :heading
       page = TestPage.new(h[:path])
       html = page.add_element(h)
@@ -154,6 +233,13 @@ module Controllers
       page = TestPage.new(h[:path])
       html = page.edit_header(h)
       html
+    end
+
+    def get_unformated_text(req,env)
+      h = {:name => req.params["elem"], :path => @location[0...@location.size - 20]}
+      #fix_path(h)
+      page = TestPage.new(h[:path])
+      page.get_element_content(h[:name].to_sym)
     end
 
     def edit_text(req,env)
@@ -172,12 +258,13 @@ module Controllers
       h[:path] = @location[0...@location.size-15]
       page = TestPage.new(h[:path])
       page.delete_element(h)
-      html = page.generate
-      if html == "" then
-        #this is an exception, and should be handled a little better.
-        html = "<p>Don't be a suckah, put some content on the page playa!</p>"
-      end
-      html
+      html = "deleted"
+      #html = page.generate
+      #if html == "" then
+      #  #this is an exception, and should be handled a little better.
+      #  html = "<p>Don't be a suckah, put some content on the page playa!</p>"
+      #end
+      #html
     end
 
     def add_page(req,env)
@@ -253,6 +340,12 @@ module Controllers
       #change back to the original dir
       Dir.chdir(current)
       temp_body
+    end
+
+    def fix_path(h)
+      if !@location.match(/^\//) then
+        h[:path] = "/" + h[:path]
+      end
     end
 
     

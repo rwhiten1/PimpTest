@@ -1,50 +1,6 @@
 
             //set up a global associative array to keep track of what elements are displayed
-            var hidden = new Array();
-            window.onload = function(){
-                nested = document.getElementsByClassName('nested');
-                for(var i = 0; i < nested.length; i++){
-                    hidden[nested[i].id] = true;
-                }
-                //add the add page form id
-                hidden["page_name_div"] = true;
-
-               //find all the 'insert' divs
-                var inserts = document.getElementsByClassName('insert_div');
-                var insert_containers = document.getElementsByClassName('insert_point');
-
-                //find all the insert items
-                var insert_items = document.getElementsByClassName('insert_list_item');
-
-                //Now, find all the textarea and header forms
-                var text_divs = document.getElementsByClassName('add_text_container');
-                var header_divs = document.getElementsByClassName('add_header_container');
-
-                //find all the cancel buttons
-                var cancel_text = document.getElementsByClassName('cancel_text');
-                var cancel_header = document.getElementsByClassName('cancel_header');
-
-                //Add the insert divs, header divs, and text area divs to the hidden array.
-                //also give the containers on click handlers
-                for(var i = 0; i < inserts.length; i++){
-                  hidden[inserts[i].id] = true;
-                  hidden[text_divs[i].id] = true;
-                  hidden[header_divs[i].id] = true;
-                  insert_containers[i].onmouseover = showInsert;
-                  insert_containers[i].onmouseout = hideInsert;
-                  cancel_text[i].onclick = displayWidgetHandler;
-                  cancel_header[i].onclick = displayWidgetHandler;
-                }
-
-
-                for(var i = 0; i < insert_items.length; i++){
-                    insert_items[i].onclick = displayWidgetHandler;
-                }
-
-
-
-
-            }
+          
 
 
             function displayWidgetHandler(e){
