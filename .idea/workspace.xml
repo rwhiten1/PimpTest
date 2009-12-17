@@ -1,28 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager" verified="true">
-    <list default="true" readonly="true" id="c6719db8-8305-4281-a9bf-26c95305774d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/specs/test_page_generation_spec.rb" afterPath="$PROJECT_DIR$/test/specs/test_page_generation_spec.rb" />
+    <list default="true" readonly="true" id="c6719db8-8305-4281-a9bf-26c95305774d" name="Default" comment="A ton of UI stuff: set up Textile using RedCloth - that is now a dependency of this application.  Fixed alot of UI bugs (specifically with the AJAX stuff).  Also added functionality that allows for the editing of tables.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/templates/content_heading.html.erb" afterPath="$PROJECT_DIR$/lib/templates/content_heading.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root/public/layout/main_layout.html.erb" afterPath="$PROJECT_DIR$/root/public/layout/main_layout.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/test_page.rb" afterPath="$PROJECT_DIR$/lib/test_page.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root/HomePage/HelloTest/page.yml" afterPath="$PROJECT_DIR$/root/HomePage/HelloTest/page.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root/public/scripts/pimp_scripts.js" afterPath="$PROJECT_DIR$/root/public/scripts/pimp_scripts.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/templates/fixture_table_edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/templates/text_element.html.erb" afterPath="$PROJECT_DIR$/lib/templates/text_element.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/templates/fixture_table.html.erb" afterPath="$PROJECT_DIR$/lib/templates/fixture_table.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/pimp_controller.rb" afterPath="$PROJECT_DIR$/lib/pimp_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/specs/test_table_object_creation_spec.rb" afterPath="$PROJECT_DIR$/test/specs/test_table_object_creation_spec.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/templates/page_element.html.erb" afterPath="$PROJECT_DIR$/lib/templates/page_element.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root/HomePage/page.yml" afterPath="$PROJECT_DIR$/root/HomePage/page.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root/HomePage/HelloTest/FirstChild/page.yml" afterPath="$PROJECT_DIR$/root/HomePage/HelloTest/FirstChild/page.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/test_object.rb" afterPath="$PROJECT_DIR$/lib/test_object.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root/public/stylesheets/active_sheet.css" afterPath="$PROJECT_DIR$/root/public/stylesheets/active_sheet.css" />
     </list>
     <list id="05605deb-070e-4e91-a3ef-aacdf65eb5ed" name="ignore" comment="ignore these files" />
-    <ignored path="pimp_test.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path="pimp_test.iws" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,46 +27,46 @@
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="test_page.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="test_page.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/test_page.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="79" selection-start="3472" selection-end="3472" vertical-scroll-proportion="0.022666667">
+            <state line="104" column="79" selection-start="3472" selection-end="3472" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="page.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/root/HomePage/page.yml">
+      <file leaf-file-name="ftp_send_fixture.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/root/fixtures/ftp_send_fixture.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="13" selection-start="4" selection-end="4" vertical-scroll-proportion="0.0">
+            <state line="42" column="103" selection-start="1737" selection-end="1737" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="active_sheet.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/root/public/stylesheets/active_sheet.css">
+      <file leaf-file-name="ftp_send_fixture.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/root/fixtures/ftp_send_fixture.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="17" selection-start="1834" selection-end="1834" vertical-scroll-proportion="0.0">
+            <state line="68" column="7" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pimp_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/pimp_controller.rb">
+      <file leaf-file-name="ftp_receive_fixture.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/root/fixtures/ftp_receive_fixture.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="241" column="47" selection-start="7765" selection-end="7765" vertical-scroll-proportion="0.0">
+            <state line="43" column="82" selection-start="1786" selection-end="1786" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_object.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/test_object.rb">
+      <file leaf-file-name="ftp_receive_fixture.yml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/root/fixtures/ftp_receive_fixture.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="45" selection-start="1636" selection-end="1636" vertical-scroll-proportion="0.0">
+            <state line="60" column="7" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.7372549">
               <folding />
             </state>
           </provider>
@@ -153,8 +137,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/root/public/scripts/pimp_scripts.js" />
-        <option value="$PROJECT_DIR$/root/HomePage/HelloTest/FirstChild/page.yml" />
         <option value="$PROJECT_DIR$/lib/templates/fixture_table.html.erb" />
         <option value="$PROJECT_DIR$/test/specs/test_page_generation_spec.rb" />
         <option value="$PROJECT_DIR$/root/HomePage/HelloTest/page.yml" />
@@ -169,6 +151,8 @@
         <option value="$PROJECT_DIR$/root/public/stylesheets/active_sheet.css" />
         <option value="$PROJECT_DIR$/lib/templates/content_heading.html.erb" />
         <option value="$PROJECT_DIR$/lib/test_page.rb" />
+        <option value="$PROJECT_DIR$/root/fixtures/ftp_receive_fixture.rb" />
+        <option value="$PROJECT_DIR$/root/fixtures/ftp_receive_fixture.yml" />
       </list>
     </option>
   </component>
@@ -333,7 +317,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -420,7 +403,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="HomePage" />
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -438,11 +425,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="HomePage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HelloTest" />
+              <option name="myItemId" value="fixtures" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -480,6 +463,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -497,14 +481,14 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="94" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="766" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="773" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="766" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="87" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="109" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="RSpec.Create Test Table Object should be able to delete an existing row from the table">
     <configuration default="false" name="Create Test Page should be able to edit a header on a page" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
@@ -748,13 +732,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="70" width="1246" height="933" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31743422" sideWeight="0.7561881" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2787829" sideWeight="0.7561881" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31564245" sideWeight="0.99915826" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23514852" sideWeight="0.99914896" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49859154" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -780,7 +764,7 @@
     <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="more UI stuff, added code to edit headings and text elements.  Also added code to delete text and refactor how page elements are named." />
+    <option name="LAST_COMMIT_MESSAGE" value="A ton of UI stuff: set up Textile using RedCloth - that is now a dependency of this application.  Fixed alot of UI bugs (specifically with the AJAX stuff).  Also added functionality that allows for the editing of tables." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -804,31 +788,12 @@
     <MESSAGE value="Fixed code to add a page, as well as the UI portion of it." />
     <MESSAGE value="finished UI piece for adding text and headers, completed back end for adding text.  Still working out the AJAX submission stuff." />
     <MESSAGE value="more UI stuff, added code to edit headings and text elements.  Also added code to delete text and refactor how page elements are named." />
+    <MESSAGE value="A ton of UI stuff: set up Textile using RedCloth - that is now a dependency of this application.  Fixed alot of UI bugs (specifically with the AJAX stuff).  Also added functionality that allows for the editing of tables." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/specs/pimp_controller_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/HomePage/HelloTest/page.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/root/public/scripts/pimp_scripts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="78" selection-start="5495" selection-end="5495" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/specs/test_table_object_creation_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="48" selection-start="2092" selection-end="2092" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/templates/fixture_table.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="113" selection-start="178" selection-end="237" vertical-scroll-proportion="-1.4166666" />
@@ -871,28 +836,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/templates/page_element.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="42" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="2" column="42" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/root/public/layout/main_layout.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="53" selection-start="6682" selection-end="6682" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="162" column="53" selection-start="6682" selection-end="6682" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/templates/fixture_table_edit.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="161" selection-start="550" selection-end="550" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="5" column="161" selection-start="550" selection-end="550" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/test_page.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="79" selection-start="3472" selection-end="3472" vertical-scroll-proportion="0.022666667">
+        <state line="104" column="79" selection-start="3472" selection-end="3472" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/root/fixtures/ftp_send_fixture.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="103" selection-start="1737" selection-end="1737" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/root/fixtures/ftp_send_fixture.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="7" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/root/fixtures/ftp_receive_fixture.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="82" selection-start="1786" selection-end="1786" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/root/fixtures/ftp_receive_fixture.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="7" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.7372549">
           <folding />
         </state>
       </provider>
